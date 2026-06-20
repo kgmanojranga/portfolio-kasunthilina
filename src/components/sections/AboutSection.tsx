@@ -1,14 +1,8 @@
 import profile from '../../data/profile';
 
 const AboutSection = () => {
-  const {
-    name,
-    title,
-    summary,
-    yearsOfExperience,
-    contact,
-    employmentHistory,
-  } = profile;
+  const { title, summary, yearsOfExperience, contact, employmentHistory } =
+    profile;
   const currentRole = employmentHistory[0];
 
   const stats = [

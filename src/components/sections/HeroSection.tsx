@@ -1,74 +1,5 @@
-import profile from '../../data/profile';
 import { Button } from '../ui/buttons/Button';
-import { GlassCard } from '../ui/cards/GlassCard';
-import { Badge } from '../ui/badges/Badge';
-import { SkillPill } from '../ui/badges/SkillPill';
-import { StatusDot } from '../ui/badges/StatusDot';
-import { SocialButton } from '../ui/social/SocialButton';
 import { ScrollHint } from '../ui/misc/ScrollHint';
-
-const FEATURED_SKILLS = ['Java 8', 'Spring Boot', 'Angular 2+', 'REST / SOAP'];
-const OTHER_SKILLS = [
-  'JPA / Hibernate',
-  'MySQL',
-  'Oracle',
-  'Maven',
-  'JUnit',
-  'AWS',
-  'Jenkins',
-  'Docker',
-];
-
-const EXP_ROWS = [
-  {
-    company: 'Cambio Software Engineering',
-    role: 'Senior Software Engineer',
-    year: '2022–Now',
-    active: true,
-  },
-  {
-    company: 'Mobitel (Pvt) Ltd',
-    role: 'Senior Software Engineer',
-    year: '2018–2022',
-    active: false,
-  },
-  {
-    company: 'Virtusa (Pvt) Ltd',
-    role: 'Associate Engineer',
-    year: '2017–2018',
-    active: false,
-  },
-];
-
-const LinkedInIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const EmailIcon = () => (
-  <svg
-    width="15"
-    height="15"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="4" width="20" height="16" rx="2" />
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-  </svg>
-);
-
-const WhatsAppIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.544 5.876L0 24l6.334-1.521A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.373l-.36-.214-3.735.897.94-3.617-.235-.372A9.818 9.818 0 0 1 2.182 12C2.182 6.578 6.578 2.182 12 2.182c5.423 0 9.818 4.396 9.818 9.818 0 5.423-4.395 9.818-9.818 9.818z" />
-  </svg>
-);
 
 const ArrowRightIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -95,8 +26,6 @@ const DownloadIcon = () => (
 );
 
 const HeroSection = () => {
-  const { contact } = profile;
-
   return (
     <>
       <style>{`

@@ -1,7 +1,7 @@
 import profile from '../../data/profile';
 
 const ContactSection = () => {
-  const { contact, name } = profile;
+  const { contact } = profile;
 
   const channels = [
     {
