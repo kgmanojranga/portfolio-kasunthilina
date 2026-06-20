@@ -4,11 +4,13 @@ interface BaseInputProps {
   label?: string;
 }
 
-interface TextInputProps extends BaseInputProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+interface TextInputProps
+  extends BaseInputProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   type?: 'text' | 'email';
 }
 
-interface TextareaInputProps extends BaseInputProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaInputProps
+  extends BaseInputProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
   type: 'textarea';
 }
 
@@ -37,21 +39,27 @@ const labelStyle: React.CSSProperties = {
   color: 'var(--text-muted)',
 };
 
-function handleFocus(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+function handleFocus(
+  e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+) {
   const el = e.currentTarget;
   el.style.borderColor = 'var(--accent-secondary)';
   el.style.background = 'rgba(59,130,196,0.06)';
   el.style.boxShadow = '0 0 0 3px rgba(59,130,196,0.12)';
 }
 
-function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+function handleBlur(
+  e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+) {
   const el = e.currentTarget;
   el.style.borderColor = 'var(--border-default)';
   el.style.background = 'rgba(255,255,255,0.05)';
   el.style.boxShadow = 'none';
 }
 
-function handleMouseEnter(e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) {
+function handleMouseEnter(
+  e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>
+) {
   const el = e.currentTarget;
   if (document.activeElement !== el) {
     el.style.borderColor = 'var(--border-emphasis)';
@@ -59,7 +67,9 @@ function handleMouseEnter(e: React.MouseEvent<HTMLInputElement | HTMLTextAreaEle
   }
 }
 
-function handleMouseLeave(e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) {
+function handleMouseLeave(
+  e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>
+) {
   const el = e.currentTarget;
   if (document.activeElement !== el) {
     el.style.borderColor = 'var(--border-default)';

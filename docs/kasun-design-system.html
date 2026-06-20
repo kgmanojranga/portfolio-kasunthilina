@@ -1,1197 +1,2274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kasun Thilina — Design System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* ═══════════════════════════════════════════
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kasun Thilina — Design System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ═══════════════════════════════════════════
        DESIGN TOKENS
     ═══════════════════════════════════════════ */
-    :root {
-      /* Backgrounds */
-      --bg-page:      #0a0c10;
-      --bg-surface:   #0f1117;
-      --bg-raised:    #161820;
-      --bg-card:      rgba(255,255,255,0.055);
+      :root {
+        /* Backgrounds */
+        --bg-page: #0a0c10;
+        --bg-surface: #0f1117;
+        --bg-raised: #161820;
+        --bg-card: rgba(255, 255, 255, 0.055);
 
-      /* Glass */
-      --glass-bg:         rgba(255,255,255,0.055);
-      --glass-bg-hover:   rgba(255,255,255,0.085);
-      --glass-border:     rgba(255,255,255,0.10);
-      --glass-border-hover: rgba(255,255,255,0.18);
-      --glass-blur:       blur(20px) saturate(160%);
+        /* Glass */
+        --glass-bg: rgba(255, 255, 255, 0.055);
+        --glass-bg-hover: rgba(255, 255, 255, 0.085);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-border-hover: rgba(255, 255, 255, 0.18);
+        --glass-blur: blur(20px) saturate(160%);
 
-      /* Text */
-      --text-primary:   #ffffff;
-      --text-secondary: rgba(255,255,255,0.60);
-      --text-muted:     rgba(255,255,255,0.32);
-      --text-hint:      rgba(255,255,255,0.18);
+        /* Text */
+        --text-primary: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.6);
+        --text-muted: rgba(255, 255, 255, 0.32);
+        --text-hint: rgba(255, 255, 255, 0.18);
 
-      /* Accent */
-      --accent-primary:   #1C3557;
-      --accent-secondary: #3B82C4;
-      --accent-tint:      rgba(59,130,196,0.15);
+        /* Accent */
+        --accent-primary: #1c3557;
+        --accent-secondary: #3b82c4;
+        --accent-tint: rgba(59, 130, 196, 0.15);
 
-      /* Semantic */
-      --success:      #4ade80;
-      --success-tint: rgba(74,222,128,0.10);
-      --warning:      #f59e0b;
-      --error:        #f87171;
+        /* Semantic */
+        --success: #4ade80;
+        --success-tint: rgba(74, 222, 128, 0.1);
+        --warning: #f59e0b;
+        --error: #f87171;
 
-      /* Border */
-      --border-subtle:   rgba(255,255,255,0.07);
-      --border-default:  rgba(255,255,255,0.10);
-      --border-emphasis: rgba(255,255,255,0.20);
+        /* Border */
+        --border-subtle: rgba(255, 255, 255, 0.07);
+        --border-default: rgba(255, 255, 255, 0.1);
+        --border-emphasis: rgba(255, 255, 255, 0.2);
 
-      /* Shadow */
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+        /* Shadow */
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
 
-      /* Radius */
-      --r-xs:   4px;
-      --r-sm:   8px;
-      --r-md:   12px;
-      --r-lg:   16px;
-      --r-xl:   20px;
-      --r-pill: 999px;
+        /* Radius */
+        --r-xs: 4px;
+        --r-sm: 8px;
+        --r-md: 12px;
+        --r-lg: 16px;
+        --r-xl: 20px;
+        --r-pill: 999px;
 
-      /* Spacing */
-      --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px;
-      --sp-4: 16px; --sp-5: 20px;  --sp-6: 24px;
-      --sp-8: 32px; --sp-10: 40px; --sp-12: 48px;
+        /* Spacing */
+        --sp-1: 4px;
+        --sp-2: 8px;
+        --sp-3: 12px;
+        --sp-4: 16px;
+        --sp-5: 20px;
+        --sp-6: 24px;
+        --sp-8: 32px;
+        --sp-10: 40px;
+        --sp-12: 48px;
 
-      /* Typography scale */
-      --fs-xs:   11px;  --fs-sm:  13px;  --fs-base: 15px;
-      --fs-md:   17px;  --fs-lg:  20px;  --fs-xl:   24px;
-      --fs-2xl:  32px;  --fs-3xl: 44px;  --fs-4xl:  60px;
+        /* Typography scale */
+        --fs-xs: 11px;
+        --fs-sm: 13px;
+        --fs-base: 15px;
+        --fs-md: 17px;
+        --fs-lg: 20px;
+        --fs-xl: 24px;
+        --fs-2xl: 32px;
+        --fs-3xl: 44px;
+        --fs-4xl: 60px;
 
-      /* Transitions */
-      --t-fast: 150ms ease;
-      --t-base: 250ms ease;
-      --t-slow: 400ms ease;
-    }
+        /* Transitions */
+        --t-fast: 150ms ease;
+        --t-base: 250ms ease;
+        --t-slow: 400ms ease;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        RESET & BASE
     ═══════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg-page);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      font-size: var(--fs-base);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg-page);
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        font-size: var(--fs-base);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        DOC LAYOUT
     ═══════════════════════════════════════════ */
-    .doc-sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 220px; height: 100vh;
-      background: var(--bg-surface);
-      border-right: 1px solid var(--border-subtle);
-      padding: 32px 0;
-      overflow-y: auto;
-      z-index: 100;
-    }
-    .doc-sidebar .logo {
-      padding: 0 24px 28px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 20px;
-    }
-    .doc-sidebar .logo-badge {
-      width: 34px; height: 34px;
-      background: var(--accent-primary);
-      border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px; font-weight: 700; color: #fff;
-      margin-bottom: 10px;
-    }
-    .doc-sidebar .logo-name {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px; font-weight: 700; color: var(--text-primary);
-      line-height: 1.2;
-    }
-    .doc-sidebar .logo-sub {
-      font-size: 10px; color: var(--text-muted);
-      letter-spacing: 0.06em; margin-top: 2px;
-    }
-    .nav-section {
-      padding: 0 16px;
-      margin-bottom: 8px;
-    }
-    .nav-section-label {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--text-hint);
-      padding: 0 8px; margin-bottom: 4px;
-    }
-    .nav-link {
-      display: block;
-      font-size: 12px; font-weight: 500;
-      color: var(--text-muted);
-      padding: 6px 8px;
-      border-radius: var(--r-sm);
-      transition: background var(--t-fast), color var(--t-fast);
-      cursor: pointer;
-    }
-    .nav-link:hover { background: var(--bg-raised); color: var(--text-secondary); }
-    .nav-link.active { color: var(--text-primary); background: var(--bg-raised); }
+      .doc-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100vh;
+        background: var(--bg-surface);
+        border-right: 1px solid var(--border-subtle);
+        padding: 32px 0;
+        overflow-y: auto;
+        z-index: 100;
+      }
+      .doc-sidebar .logo {
+        padding: 0 24px 28px;
+        border-bottom: 1px solid var(--border-subtle);
+        margin-bottom: 20px;
+      }
+      .doc-sidebar .logo-badge {
+        width: 34px;
+        height: 34px;
+        background: var(--accent-primary);
+        border-radius: var(--r-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .doc-sidebar .logo-name {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.2;
+      }
+      .doc-sidebar .logo-sub {
+        font-size: 10px;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        margin-top: 2px;
+      }
+      .nav-section {
+        padding: 0 16px;
+        margin-bottom: 8px;
+      }
+      .nav-section-label {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-hint);
+        padding: 0 8px;
+        margin-bottom: 4px;
+      }
+      .nav-link {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-muted);
+        padding: 6px 8px;
+        border-radius: var(--r-sm);
+        transition:
+          background var(--t-fast),
+          color var(--t-fast);
+        cursor: pointer;
+      }
+      .nav-link:hover {
+        background: var(--bg-raised);
+        color: var(--text-secondary);
+      }
+      .nav-link.active {
+        color: var(--text-primary);
+        background: var(--bg-raised);
+      }
 
-    .doc-main {
-      margin-left: 220px;
-      padding: 0 64px 120px;
-      max-width: 1040px;
-    }
+      .doc-main {
+        margin-left: 220px;
+        padding: 0 64px 120px;
+        max-width: 1040px;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        SECTION STRUCTURE
     ═══════════════════════════════════════════ */
-    .ds-section {
-      padding: 72px 0 0;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 0;
-    }
-    .ds-section:last-child { border-bottom: none; }
+      .ds-section {
+        padding: 72px 0 0;
+        border-bottom: 1px solid var(--border-subtle);
+        margin-bottom: 0;
+      }
+      .ds-section:last-child {
+        border-bottom: none;
+      }
 
-    .section-header { margin-bottom: 40px; }
-    .section-tag {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent-secondary);
-      margin-bottom: 8px;
-    }
-    .section-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: var(--fs-2xl); font-weight: 700;
-      color: var(--text-primary); line-height: 1.2;
-    }
-    .section-desc {
-      font-size: var(--fs-sm); color: var(--text-muted);
-      margin-top: 8px; max-width: 520px; line-height: 1.7;
-    }
+      .section-header {
+        margin-bottom: 40px;
+      }
+      .section-tag {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent-secondary);
+        margin-bottom: 8px;
+      }
+      .section-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: var(--fs-2xl);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.2;
+      }
+      .section-desc {
+        font-size: var(--fs-sm);
+        color: var(--text-muted);
+        margin-top: 8px;
+        max-width: 520px;
+        line-height: 1.7;
+      }
 
-    /* Token display */
-    .token-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 48px;
-    }
-    .token-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--r-md);
-      overflow: hidden;
-    }
-    .token-swatch { height: 52px; }
-    .token-info { padding: 10px 12px; }
-    .token-name {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--text-secondary);
-      margin-bottom: 2px;
-    }
-    .token-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px; color: var(--text-muted);
-    }
+      /* Token display */
+      .token-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+        margin-bottom: 48px;
+      }
+      .token-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--r-md);
+        overflow: hidden;
+      }
+      .token-swatch {
+        height: 52px;
+      }
+      .token-info {
+        padding: 10px 12px;
+      }
+      .token-name {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: var(--text-secondary);
+        margin-bottom: 2px;
+      }
+      .token-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: var(--text-muted);
+      }
 
-    /* Code block */
-    .code-block {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--r-md);
-      padding: 20px 24px;
-      margin: 16px 0 32px;
-      overflow-x: auto;
-    }
-    .code-block pre {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px; line-height: 1.8;
-      color: rgba(255,255,255,0.70);
-      white-space: pre;
-    }
-    .code-block .c-comment { color: rgba(255,255,255,0.25); }
-    .code-block .c-key     { color: #93c5fd; }
-    .code-block .c-val     { color: #86efac; }
-    .code-block .c-str     { color: #fca5a5; }
+      /* Code block */
+      .code-block {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--r-md);
+        padding: 20px 24px;
+        margin: 16px 0 32px;
+        overflow-x: auto;
+      }
+      .code-block pre {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.7);
+        white-space: pre;
+      }
+      .code-block .c-comment {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .code-block .c-key {
+        color: #93c5fd;
+      }
+      .code-block .c-val {
+        color: #86efac;
+      }
+      .code-block .c-str {
+        color: #fca5a5;
+      }
 
-    /* Component row label */
-    .comp-label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--text-hint);
-      margin: 32px 0 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
+      /* Component row label */
+      .comp-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-hint);
+        margin: 32px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
 
-    /* Preview strip */
-    .preview-strip {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--r-lg);
-      padding: 32px;
-      margin-bottom: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 14px;
-    }
-    .preview-strip.dark-bg {
-      background: #080810;
-    }
-    .preview-strip.column {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+      /* Preview strip */
+      .preview-strip {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--r-lg);
+        padding: 32px;
+        margin-bottom: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+      }
+      .preview-strip.dark-bg {
+        background: #080810;
+      }
+      .preview-strip.column {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-    /* Spec row */
-    .spec-row {
-      display: flex; gap: 12px;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      flex-wrap: wrap;
-    }
-    .spec-pill {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--r-pill);
-      padding: 3px 10px;
-      font-family: 'JetBrains Mono', monospace;
-    }
+      /* Spec row */
+      .spec-row {
+        display: flex;
+        gap: 12px;
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 6px;
+        flex-wrap: wrap;
+      }
+      .spec-pill {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--r-pill);
+        padding: 3px 10px;
+        font-family: 'JetBrains Mono', monospace;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        TYPOGRAPHY SPECIMENS
     ═══════════════════════════════════════════ */
-    .type-specimen { margin-bottom: 28px; }
-    .type-meta {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-hint);
-      margin-bottom: 8px;
-      display: flex; gap: 16px; align-items: center;
-    }
-    .type-meta span { color: var(--text-muted); font-weight: 400; font-family: 'JetBrains Mono', monospace; }
+      .type-specimen {
+        margin-bottom: 28px;
+      }
+      .type-meta {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-hint);
+        margin-bottom: 8px;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .type-meta span {
+        color: var(--text-muted);
+        font-weight: 400;
+        font-family: 'JetBrains Mono', monospace;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: BUTTONS
     ═══════════════════════════════════════════ */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 600;
-      letter-spacing: 0.03em;
-      border-radius: var(--r-pill);
-      padding: 12px 26px;
-      cursor: pointer;
-      transition: transform var(--t-fast), background var(--t-base), box-shadow var(--t-base);
-      border: none; outline: none;
-      text-decoration: none;
-    }
-    .btn:active { transform: scale(0.97); }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        border-radius: var(--r-pill);
+        padding: 12px 26px;
+        cursor: pointer;
+        transition:
+          transform var(--t-fast),
+          background var(--t-base),
+          box-shadow var(--t-base);
+        border: none;
+        outline: none;
+        text-decoration: none;
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
 
-    .btn-primary {
-      background: #ffffff;
-      color: #0a0c10;
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-primary:hover { background: #e8e8e8; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+      .btn-primary {
+        background: #ffffff;
+        color: #0a0c10;
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-primary:hover {
+        background: #e8e8e8;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
 
-    .btn-ghost {
-      background: var(--glass-bg);
-      color: rgba(255,255,255,0.80);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-blur);
-    }
-    .btn-ghost:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); transform: translateY(-2px); }
+      .btn-ghost {
+        background: var(--glass-bg);
+        color: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--glass-border);
+        backdrop-filter: var(--glass-blur);
+      }
+      .btn-ghost:hover {
+        background: var(--glass-bg-hover);
+        border-color: var(--glass-border-hover);
+        transform: translateY(-2px);
+      }
 
-    .btn-accent {
-      background: var(--accent-primary);
-      color: #ffffff;
-      box-shadow: 0 2px 12px rgba(28,53,87,0.5);
-    }
-    .btn-accent:hover { background: #254878; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,53,87,0.6); }
+      .btn-accent {
+        background: var(--accent-primary);
+        color: #ffffff;
+        box-shadow: 0 2px 12px rgba(28, 53, 87, 0.5);
+      }
+      .btn-accent:hover {
+        background: #254878;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(28, 53, 87, 0.6);
+      }
 
-    .btn-outline {
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      border: 1.5px solid rgba(255,255,255,0.20);
-    }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+      .btn-outline {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.75);
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+      }
+      .btn-outline:hover {
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #fff;
+      }
 
-    .btn-danger {
-      background: rgba(248,113,113,0.12);
-      color: var(--error);
-      border: 1px solid rgba(248,113,113,0.25);
-    }
-    .btn-danger:hover { background: rgba(248,113,113,0.20); }
+      .btn-danger {
+        background: rgba(248, 113, 113, 0.12);
+        color: var(--error);
+        border: 1px solid rgba(248, 113, 113, 0.25);
+      }
+      .btn-danger:hover {
+        background: rgba(248, 113, 113, 0.2);
+      }
 
-    .btn-sm { padding: 7px 16px; font-size: 12px; }
-    .btn-lg { padding: 16px 36px; font-size: 15px; }
-    .btn-icon { padding: 10px; border-radius: 50%; }
+      .btn-sm {
+        padding: 7px 16px;
+        font-size: 12px;
+      }
+      .btn-lg {
+        padding: 16px 36px;
+        font-size: 15px;
+      }
+      .btn-icon {
+        padding: 10px;
+        border-radius: 50%;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: GLASS CARDS
     ═══════════════════════════════════════════ */
-    .g-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--r-lg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      padding: 20px 24px;
-      transition: background var(--t-base), border-color var(--t-base), transform var(--t-base);
-    }
-    .g-card:hover {
-      background: var(--glass-bg-hover);
-      border-color: var(--glass-border-hover);
-      transform: translateY(-4px);
-    }
-    .g-card-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: var(--fs-md); font-weight: 600;
-      color: var(--text-primary); margin-bottom: 6px;
-    }
-    .g-card-body {
-      font-size: var(--fs-sm); color: var(--text-secondary); line-height: 1.65;
-    }
-    .g-card-label {
-      font-size: 9px; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--text-hint); margin-bottom: 12px;
-    }
+      .g-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--r-lg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        padding: 20px 24px;
+        transition:
+          background var(--t-base),
+          border-color var(--t-base),
+          transform var(--t-base);
+      }
+      .g-card:hover {
+        background: var(--glass-bg-hover);
+        border-color: var(--glass-border-hover);
+        transform: translateY(-4px);
+      }
+      .g-card-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: var(--fs-md);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .g-card-body {
+        font-size: var(--fs-sm);
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+      .g-card-label {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-hint);
+        margin-bottom: 12px;
+      }
 
-    /* Card variants */
-    .g-card-accent { border-color: rgba(59,130,196,0.30); }
-    .g-card-success { border-color: rgba(74,222,128,0.25); }
+      /* Card variants */
+      .g-card-accent {
+        border-color: rgba(59, 130, 196, 0.3);
+      }
+      .g-card-success {
+        border-color: rgba(74, 222, 128, 0.25);
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: BADGES & PILLS
     ═══════════════════════════════════════════ */
-    .badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      border-radius: var(--r-pill);
-      padding: 4px 10px;
-    }
-    .badge-success { background: var(--success-tint); color: var(--success); border: 1px solid rgba(74,222,128,0.22); }
-    .badge-info    { background: var(--accent-tint); color: var(--accent-secondary); border: 1px solid rgba(59,130,196,0.22); }
-    .badge-warning { background: rgba(245,158,11,0.10); color: var(--warning); border: 1px solid rgba(245,158,11,0.22); }
-    .badge-error   { background: rgba(248,113,113,0.10); color: var(--error); border: 1px solid rgba(248,113,113,0.22); }
-    .badge-neutral { background: rgba(255,255,255,0.07); color: var(--text-secondary); border: 1px solid var(--border-default); }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        border-radius: var(--r-pill);
+        padding: 4px 10px;
+      }
+      .badge-success {
+        background: var(--success-tint);
+        color: var(--success);
+        border: 1px solid rgba(74, 222, 128, 0.22);
+      }
+      .badge-info {
+        background: var(--accent-tint);
+        color: var(--accent-secondary);
+        border: 1px solid rgba(59, 130, 196, 0.22);
+      }
+      .badge-warning {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+      }
+      .badge-error {
+        background: rgba(248, 113, 113, 0.1);
+        color: var(--error);
+        border: 1px solid rgba(248, 113, 113, 0.22);
+      }
+      .badge-neutral {
+        background: rgba(255, 255, 255, 0.07);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-default);
+      }
 
-    .skill-pill {
-      display: inline-flex;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: rgba(255,255,255,0.65);
-      background: rgba(255,255,255,0.07);
-      border: 1px solid var(--border-default);
-      border-radius: var(--r-pill);
-      padding: 4px 12px;
-      transition: background var(--t-fast), color var(--t-fast);
-    }
-    .skill-pill:hover { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.90); }
-    .skill-pill.featured { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.20); }
+      .skill-pill {
+        display: inline-flex;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.65);
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid var(--border-default);
+        border-radius: var(--r-pill);
+        padding: 4px 12px;
+        transition:
+          background var(--t-fast),
+          color var(--t-fast);
+      }
+      .skill-pill:hover {
+        background: rgba(255, 255, 255, 0.14);
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .skill-pill.featured {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
 
-    /* Status dot */
-    .status-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      display: inline-block; flex-shrink: 0;
-    }
-    .status-dot.online  { background: var(--success); box-shadow: 0 0 0 3px var(--success-tint); animation: pulse-dot 2.4s ease-in-out infinite; }
-    .status-dot.busy    { background: var(--warning); }
-    .status-dot.offline { background: var(--text-muted); }
-    @keyframes pulse-dot {
-      0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.18); }
-      50%     { box-shadow: 0 0 0 6px rgba(74,222,128,0.06); }
-    }
+      /* Status dot */
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .status-dot.online {
+        background: var(--success);
+        box-shadow: 0 0 0 3px var(--success-tint);
+        animation: pulse-dot 2.4s ease-in-out infinite;
+      }
+      .status-dot.busy {
+        background: var(--warning);
+      }
+      .status-dot.offline {
+        background: var(--text-muted);
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.18);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(74, 222, 128, 0.06);
+        }
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: FORM INPUTS
     ═══════════════════════════════════════════ */
-    .field { display: flex; flex-direction: column; gap: 7px; }
-    .field-label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .input {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 400;
-      color: var(--text-primary);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border-default);
-      border-radius: var(--r-sm);
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color var(--t-fast), background var(--t-fast);
-      width: 100%;
-    }
-    .input::placeholder { color: var(--text-hint); }
-    .input:hover { border-color: var(--border-emphasis); background: rgba(255,255,255,0.07); }
-    .input:focus { border-color: var(--accent-secondary); background: rgba(59,130,196,0.06); box-shadow: 0 0 0 3px rgba(59,130,196,0.12); }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .field-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .input {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-default);
+        border-radius: var(--r-sm);
+        padding: 11px 14px;
+        outline: none;
+        transition:
+          border-color var(--t-fast),
+          background var(--t-fast);
+        width: 100%;
+      }
+      .input::placeholder {
+        color: var(--text-hint);
+      }
+      .input:hover {
+        border-color: var(--border-emphasis);
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .input:focus {
+        border-color: var(--accent-secondary);
+        background: rgba(59, 130, 196, 0.06);
+        box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.12);
+      }
 
-    textarea.input { resize: vertical; min-height: 90px; }
+      textarea.input {
+        resize: vertical;
+        min-height: 90px;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: TIMELINE
     ═══════════════════════════════════════════ */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 5px; top: 8px; bottom: 8px;
-      width: 1px; background: var(--border-default);
-    }
-    .tl-item { position: relative; padding-bottom: 28px; }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot {
-      position: absolute; left: -28px; top: 4px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--bg-page);
-      border: 2px solid var(--border-emphasis);
-      transition: border-color var(--t-base);
-    }
-    .tl-item.active .tl-dot { border-color: var(--accent-secondary); background: var(--accent-secondary); }
-    .tl-year {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px; color: var(--text-muted); margin-bottom: 4px;
-    }
-    .tl-company {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px; font-weight: 600; color: var(--text-primary);
-    }
-    .tl-role { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+      .timeline {
+        position: relative;
+        padding-left: 28px;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 8px;
+        bottom: 8px;
+        width: 1px;
+        background: var(--border-default);
+      }
+      .tl-item {
+        position: relative;
+        padding-bottom: 28px;
+      }
+      .tl-item:last-child {
+        padding-bottom: 0;
+      }
+      .tl-dot {
+        position: absolute;
+        left: -28px;
+        top: 4px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--bg-page);
+        border: 2px solid var(--border-emphasis);
+        transition: border-color var(--t-base);
+      }
+      .tl-item.active .tl-dot {
+        border-color: var(--accent-secondary);
+        background: var(--accent-secondary);
+      }
+      .tl-year {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+      .tl-company {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+      .tl-role {
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-top: 2px;
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: STAT CARD
     ═══════════════════════════════════════════ */
-    .stat-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--r-md);
-      padding: 18px 22px;
-      backdrop-filter: var(--glass-blur);
-    }
-    .stat-num {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: var(--fs-2xl); font-weight: 700;
-      color: var(--text-primary); line-height: 1; margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--text-muted);
-    }
+      .stat-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--r-md);
+        padding: 18px 22px;
+        backdrop-filter: var(--glass-blur);
+      }
+      .stat-num {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: var(--fs-2xl);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: DIVIDER
     ═══════════════════════════════════════════ */
-    .divider {
-      height: 1px; background: var(--border-subtle);
-      margin: 24px 0;
-    }
-    .divider-label {
-      display: flex; align-items: center; gap: 12px;
-      color: var(--text-hint); font-size: 11px; margin: 24px 0;
-    }
-    .divider-label::before, .divider-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: var(--border-subtle);
-    }
+      .divider {
+        height: 1px;
+        background: var(--border-subtle);
+        margin: 24px 0;
+      }
+      .divider-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-hint);
+        font-size: 11px;
+        margin: 24px 0;
+      }
+      .divider-label::before,
+      .divider-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border-subtle);
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: SOCIAL BUTTON
     ═══════════════════════════════════════════ */
-    .social-btn {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      display: inline-flex; align-items: center; justify-content: center;
-      cursor: pointer; color: var(--text-secondary);
-      transition: background var(--t-base), border-color var(--t-base), color var(--t-fast);
-    }
-    .social-btn:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); color: var(--text-primary); }
+      .social-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--text-secondary);
+        transition:
+          background var(--t-base),
+          border-color var(--t-base),
+          color var(--t-fast);
+      }
+      .social-btn:hover {
+        background: var(--glass-bg-hover);
+        border-color: var(--glass-border-hover);
+        color: var(--text-primary);
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        COMPONENT: NAV BAR PREVIEW
     ═══════════════════════════════════════════ */
-    .navbar-preview {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--r-xl);
-      display: flex; align-items: center;
-      padding: 0 24px; height: 60px; gap: 0;
-      width: 100%;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-    }
-    .nav-badge {
-      width: 32px; height: 32px; border-radius: var(--r-sm);
-      background: var(--accent-primary);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px; font-weight: 700; color: #fff;
-    }
-    .nav-name-block .n1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.1;
-    }
-    .nav-name-block .n2 {
-      font-size: 9px; color: var(--text-muted);
-      letter-spacing: 0.07em; text-transform: uppercase; margin-top: 1px;
-    }
-    .nav-links {
-      display: flex; gap: 28px; flex: 1; justify-content: center;
-    }
-    .nav-link-item {
-      font-size: 12px; font-weight: 500; color: var(--text-muted);
-      padding-bottom: 2px;
-      transition: color var(--t-fast);
-    }
-    .nav-link-item.active {
-      color: var(--text-primary);
-      border-bottom: 2px solid rgba(255,255,255,0.55);
-    }
-    .nav-link-item:hover { color: var(--text-secondary); }
-    .nav-cta {
-      margin-left: auto;
-      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--text-primary);
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,0.22);
-      border-radius: var(--r-pill);
-      padding: 7px 16px; cursor: pointer;
-      transition: border-color var(--t-fast), background var(--t-fast);
-    }
-    .nav-cta:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.05); }
+      .navbar-preview {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--r-xl);
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        height: 60px;
+        gap: 0;
+        width: 100%;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .nav-badge {
+        width: 32px;
+        height: 32px;
+        border-radius: var(--r-sm);
+        background: var(--accent-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .nav-name-block .n1 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.1;
+      }
+      .nav-name-block .n2 {
+        font-size: 9px;
+        color: var(--text-muted);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-top: 1px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        flex: 1;
+        justify-content: center;
+      }
+      .nav-link-item {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-muted);
+        padding-bottom: 2px;
+        transition: color var(--t-fast);
+      }
+      .nav-link-item.active {
+        color: var(--text-primary);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+      }
+      .nav-link-item:hover {
+        color: var(--text-secondary);
+      }
+      .nav-cta {
+        margin-left: auto;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--text-primary);
+        background: transparent;
+        border: 1.5px solid rgba(255, 255, 255, 0.22);
+        border-radius: var(--r-pill);
+        padding: 7px 16px;
+        cursor: pointer;
+        transition:
+          border-color var(--t-fast),
+          background var(--t-fast);
+      }
+      .nav-cta:hover {
+        border-color: rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.05);
+      }
 
-    /* ═══════════════════════════════════════════
+      /* ═══════════════════════════════════════════
        SECTION: COVER
     ═══════════════════════════════════════════ */
-    .doc-cover {
-      min-height: 280px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 64px 0 56px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .cover-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 100% at 80% 50%, rgba(28,53,87,0.35) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cover-eyebrow {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent-secondary); margin-bottom: 16px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .cover-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent-secondary); display: block; }
-    .cover-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(36px, 4vw, 52px); font-weight: 800;
-      color: var(--text-primary); line-height: 1.1; letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-    .cover-desc {
-      font-size: 14px; color: var(--text-muted); max-width: 480px;
-      line-height: 1.7;
-    }
-    .cover-meta {
-      display: flex; gap: 24px; margin-top: 32px;
-      font-size: 11px; color: var(--text-hint);
-      font-family: 'JetBrains Mono', monospace;
-    }
+      .doc-cover {
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 64px 0 56px;
+        border-bottom: 1px solid var(--border-subtle);
+        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .cover-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 100% at 80% 50%,
+          rgba(28, 53, 87, 0.35) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .cover-eyebrow {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent-secondary);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cover-eyebrow::before {
+        content: '';
+        width: 24px;
+        height: 1px;
+        background: var(--accent-secondary);
+        display: block;
+      }
+      .cover-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: clamp(36px, 4vw, 52px);
+        font-weight: 800;
+        color: var(--text-primary);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+      .cover-desc {
+        font-size: 14px;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.7;
+      }
+      .cover-meta {
+        display: flex;
+        gap: 24px;
+        margin-top: 32px;
+        font-size: 11px;
+        color: var(--text-hint);
+        font-family: 'JetBrains Mono', monospace;
+      }
 
-    /* Scroll reveal */
-    @media (prefers-reduced-motion: no-preference) {
-      .ds-section { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-      .ds-section.visible { opacity: 1; transform: none; }
-      .doc-cover { opacity: 1; transform: none; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ── SIDEBAR ── -->
-<nav class="doc-sidebar">
-  <div class="logo">
-    <div class="logo-badge">KT</div>
-    <div class="logo-name">Kasun Thilina</div>
-    <div class="logo-sub">Design System v1.0</div>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-section-label">Foundation</div>
-    <a class="nav-link active" onclick="scrollTo('tokens')">Color Tokens</a>
-    <a class="nav-link" onclick="scrollTo('typography')">Typography</a>
-    <a class="nav-link" onclick="scrollTo('spacing')">Spacing & Radius</a>
-  </div>
-
-  <div class="nav-section" style="margin-top:16px">
-    <div class="nav-section-label">Components</div>
-    <a class="nav-link" onclick="scrollTo('navbar')">Navigation Bar</a>
-    <a class="nav-link" onclick="scrollTo('buttons')">Buttons</a>
-    <a class="nav-link" onclick="scrollTo('cards')">Glass Cards</a>
-    <a class="nav-link" onclick="scrollTo('badges')">Badges & Pills</a>
-    <a class="nav-link" onclick="scrollTo('inputs')">Form Inputs</a>
-    <a class="nav-link" onclick="scrollTo('stats')">Stat Cards</a>
-    <a class="nav-link" onclick="scrollTo('timeline')">Timeline</a>
-    <a class="nav-link" onclick="scrollTo('social')">Social Buttons</a>
-    <a class="nav-link" onclick="scrollTo('misc')">Misc Elements</a>
-  </div>
-
-  <div class="nav-section" style="margin-top:16px">
-    <div class="nav-section-label">Reference</div>
-    <a class="nav-link" onclick="scrollTo('animations')">Animations</a>
-    <a class="nav-link" onclick="scrollTo('cssref')">CSS Variables</a>
-  </div>
-</nav>
-
-<!-- ── MAIN ── -->
-<main class="doc-main">
-
-  <!-- Cover -->
-  <div class="doc-cover" id="cover">
-    <div class="cover-bg"></div>
-    <div class="cover-eyebrow">Design System</div>
-    <h1 class="cover-title">Kasun Thilina<br>Portfolio UI Kit</h1>
-    <p class="cover-desc">Complete component library, color tokens, typography scale, and implementation patterns for the portfolio website.</p>
-    <div class="cover-meta">
-      <span>Version 1.0</span>
-      <span>·</span>
-      <span>Dark Theme</span>
-      <span>·</span>
-      <span>2024</span>
-    </div>
-  </div>
-
-  <!-- ═══ 1. COLOR TOKENS ═══ -->
-  <section class="ds-section" id="tokens">
-    <div class="section-header">
-      <div class="section-tag">Foundation · 01</div>
-      <h2 class="section-title">Color Tokens</h2>
-      <p class="section-desc">Every color in the system is defined as a CSS variable on <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-secondary)">:root</code>. Never use raw hex values in components — always reference a token.</p>
-    </div>
-
-    <div class="comp-label">Backgrounds</div>
-    <div class="token-grid">
-      <div class="token-card"><div class="token-swatch" style="background:#0a0c10"></div><div class="token-info"><div class="token-name">--bg-page</div><div class="token-value">#0a0c10</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:#0f1117"></div><div class="token-info"><div class="token-name">--bg-surface</div><div class="token-value">#0f1117</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:#161820"></div><div class="token-info"><div class="token-name">--bg-raised</div><div class="token-value">#161820</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:rgba(255,255,255,0.055)"></div><div class="token-info"><div class="token-name">--bg-card</div><div class="token-value">rgba(255,255,255,0.055)</div></div></div>
-    </div>
-
-    <div class="comp-label">Text</div>
-    <div class="token-grid">
-      <div class="token-card"><div class="token-swatch" style="background:#ffffff"></div><div class="token-info"><div class="token-name">--text-primary</div><div class="token-value">#ffffff</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:rgba(255,255,255,0.60)"></div><div class="token-info"><div class="token-name">--text-secondary</div><div class="token-value">rgba(255,255,255,0.60)</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:rgba(255,255,255,0.32)"></div><div class="token-info"><div class="token-name">--text-muted</div><div class="token-value">rgba(255,255,255,0.32)</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:rgba(255,255,255,0.18)"></div><div class="token-info"><div class="token-name">--text-hint</div><div class="token-value">rgba(255,255,255,0.18)</div></div></div>
-    </div>
-
-    <div class="comp-label">Accent</div>
-    <div class="token-grid">
-      <div class="token-card"><div class="token-swatch" style="background:#1C3557"></div><div class="token-info"><div class="token-name">--accent-primary</div><div class="token-value">#1C3557</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:#3B82C4"></div><div class="token-info"><div class="token-name">--accent-secondary</div><div class="token-value">#3B82C4</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:rgba(59,130,196,0.15)"></div><div class="token-info"><div class="token-name">--accent-tint</div><div class="token-value">rgba(59,130,196,0.15)</div></div></div>
-    </div>
-
-    <div class="comp-label">Semantic</div>
-    <div class="token-grid">
-      <div class="token-card"><div class="token-swatch" style="background:#4ade80"></div><div class="token-info"><div class="token-name">--success</div><div class="token-value">#4ade80</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:#f59e0b"></div><div class="token-info"><div class="token-name">--warning</div><div class="token-value">#f59e0b</div></div></div>
-      <div class="token-card"><div class="token-swatch" style="background:#f87171"></div><div class="token-info"><div class="token-name">--error</div><div class="token-value">#f87171</div></div></div>
-    </div>
-  </section>
-
-  <!-- ═══ 2. TYPOGRAPHY ═══ -->
-  <section class="ds-section" id="typography">
-    <div class="section-header">
-      <div class="section-tag">Foundation · 02</div>
-      <h2 class="section-title">Typography</h2>
-      <p class="section-desc">Three font families, each with a specific role. Never mix roles.</p>
-    </div>
-
-    <div class="preview-strip column">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:20px;font-family:'JetBrains Mono',monospace">Plus Jakarta Sans — Display & Headings</div>
-      <div class="type-specimen">
-        <div class="type-meta">Display / Hero Name <span>800 · 60px · -0.02em</span></div>
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:800;letter-spacing:-0.02em;line-height:1.0;color:var(--text-primary)">Kasun Thilina</div>
+      /* Scroll reveal */
+      @media (prefers-reduced-motion: no-preference) {
+        .ds-section {
+          opacity: 0;
+          transform: translateY(16px);
+          transition:
+            opacity 0.5s ease,
+            transform 0.5s ease;
+        }
+        .ds-section.visible {
+          opacity: 1;
+          transform: none;
+        }
+        .doc-cover {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── SIDEBAR ── -->
+    <nav class="doc-sidebar">
+      <div class="logo">
+        <div class="logo-badge">KT</div>
+        <div class="logo-name">Kasun Thilina</div>
+        <div class="logo-sub">Design System v1.0</div>
       </div>
-      <div class="type-specimen">
-        <div class="type-meta">Section Heading <span>700 · 32px · -0.01em</span></div>
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.01em;color:var(--text-primary)">Work Experience</div>
-      </div>
-      <div class="type-specimen">
-        <div class="type-meta">Sub-heading <span>600 · 20px</span></div>
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:600;color:var(--text-primary)">Cambio Software Engineering</div>
-      </div>
-      <div class="type-specimen">
-        <div class="type-meta">Card Title <span>600 · 17px</span></div>
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:600;color:var(--text-primary)">Senior Software Engineer</div>
-      </div>
-    </div>
 
-    <div class="preview-strip column" style="margin-top:12px">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:20px;font-family:'JetBrains Mono',monospace">Inter — Body & UI</div>
-      <div class="type-specimen">
-        <div class="type-meta">Body <span>400 · 15px · 1.7</span></div>
-        <div style="font-size:15px;font-weight:400;color:var(--text-secondary);line-height:1.7;max-width:480px">Senior Software Engineer crafting robust enterprise systems with Java, Spring Boot &amp; Angular. 7+ years building things that scale.</div>
+      <div class="nav-section">
+        <div class="nav-section-label">Foundation</div>
+        <a class="nav-link active" onclick="scrollTo('tokens')">Color Tokens</a>
+        <a class="nav-link" onclick="scrollTo('typography')">Typography</a>
+        <a class="nav-link" onclick="scrollTo('spacing')">Spacing & Radius</a>
       </div>
-      <div class="type-specimen">
-        <div class="type-meta">UI Label <span>600 · 11px · 0.10em uppercase</span></div>
-        <div style="font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--text-muted)">Core Technologies</div>
-      </div>
-      <div class="type-specimen">
-        <div class="type-meta">Caption / Eyebrow <span>500 · 10px · 0.22em uppercase</span></div>
-        <div style="font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-secondary)">Available for work</div>
-      </div>
-    </div>
 
-    <div class="preview-strip column" style="margin-top:12px">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;font-family:'JetBrains Mono',monospace">JetBrains Mono — Code & Data</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-secondary);line-height:2">
-        Java 8 &nbsp;·&nbsp; Spring Boot &nbsp;·&nbsp; Angular 2+ &nbsp;·&nbsp; REST / SOAP<br>
-        <span style="font-size:10px;color:var(--text-muted)">2022–Present &nbsp;·&nbsp; kgkasunthilina@gmail.com</span>
+      <div class="nav-section" style="margin-top: 16px">
+        <div class="nav-section-label">Components</div>
+        <a class="nav-link" onclick="scrollTo('navbar')">Navigation Bar</a>
+        <a class="nav-link" onclick="scrollTo('buttons')">Buttons</a>
+        <a class="nav-link" onclick="scrollTo('cards')">Glass Cards</a>
+        <a class="nav-link" onclick="scrollTo('badges')">Badges & Pills</a>
+        <a class="nav-link" onclick="scrollTo('inputs')">Form Inputs</a>
+        <a class="nav-link" onclick="scrollTo('stats')">Stat Cards</a>
+        <a class="nav-link" onclick="scrollTo('timeline')">Timeline</a>
+        <a class="nav-link" onclick="scrollTo('social')">Social Buttons</a>
+        <a class="nav-link" onclick="scrollTo('misc')">Misc Elements</a>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══ 3. SPACING & RADIUS ═══ -->
-  <section class="ds-section" id="spacing">
-    <div class="section-header">
-      <div class="section-tag">Foundation · 03</div>
-      <h2 class="section-title">Spacing & Radius</h2>
-    </div>
+      <div class="nav-section" style="margin-top: 16px">
+        <div class="nav-section-label">Reference</div>
+        <a class="nav-link" onclick="scrollTo('animations')">Animations</a>
+        <a class="nav-link" onclick="scrollTo('cssref')">CSS Variables</a>
+      </div>
+    </nav>
 
-    <div class="comp-label">Spacing Scale</div>
-    <div class="preview-strip" style="flex-direction:column;align-items:flex-start;gap:10px">
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <div style="width:4px;height:20px;background:var(--accent-secondary);border-radius:2px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-1: 4px</span>
-        <div style="width:8px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-2: 8px</span>
-        <div style="width:12px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-3: 12px</span>
-        <div style="width:16px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-4: 16px</span>
-        <div style="width:24px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-6: 24px</span>
-        <div style="width:32px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-8: 32px</span>
-        <div style="width:48px;height:20px;background:var(--accent-secondary);border-radius:2px;margin-left:16px"></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">--sp-12: 48px</span>
+    <!-- ── MAIN ── -->
+    <main class="doc-main">
+      <!-- Cover -->
+      <div class="doc-cover" id="cover">
+        <div class="cover-bg"></div>
+        <div class="cover-eyebrow">Design System</div>
+        <h1 class="cover-title">Kasun Thilina<br />Portfolio UI Kit</h1>
+        <p class="cover-desc">
+          Complete component library, color tokens, typography scale, and
+          implementation patterns for the portfolio website.
+        </p>
+        <div class="cover-meta">
+          <span>Version 1.0</span>
+          <span>·</span>
+          <span>Dark Theme</span>
+          <span>·</span>
+          <span>2024</span>
+        </div>
       </div>
-    </div>
 
-    <div class="comp-label" style="margin-top:28px">Border Radius</div>
-    <div class="preview-strip" style="gap:20px;flex-wrap:wrap">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:4px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-xs: 4px</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:8px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-sm: 8px</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:12px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-md: 12px</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:16px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-lg: 16px</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:20px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-xl: 20px</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-        <div style="width:52px;height:52px;background:var(--bg-raised);border:1px solid var(--border-default);border-radius:999px"></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">--r-pill</span>
-      </div>
-    </div>
-  </section>
+      <!-- ═══ 1. COLOR TOKENS ═══ -->
+      <section class="ds-section" id="tokens">
+        <div class="section-header">
+          <div class="section-tag">Foundation · 01</div>
+          <h2 class="section-title">Color Tokens</h2>
+          <p class="section-desc">
+            Every color in the system is defined as a CSS variable on
+            <code
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 12px;
+                color: var(--text-secondary);
+              "
+              >:root</code
+            >. Never use raw hex values in components — always reference a
+            token.
+          </p>
+        </div>
 
-  <!-- ═══ 4. NAVBAR ═══ -->
-  <section class="ds-section" id="navbar">
-    <div class="section-header">
-      <div class="section-tag">Component · 01</div>
-      <h2 class="section-title">Navigation Bar</h2>
-      <p class="section-desc">Fixed at top, full width, 64px height. Frosted surface on scroll. Identity block left, links centered, CTA right.</p>
-    </div>
-    <div class="preview-strip">
-      <div class="navbar-preview">
-        <div class="nav-logo">
-          <div class="nav-badge">KT</div>
-          <div class="nav-name-block">
-            <div class="n1">Kasun Thilina</div>
-            <div class="n2">Senior Software Engineer</div>
+        <div class="comp-label">Backgrounds</div>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="token-swatch" style="background: #0a0c10"></div>
+            <div class="token-info">
+              <div class="token-name">--bg-page</div>
+              <div class="token-value">#0a0c10</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="token-swatch" style="background: #0f1117"></div>
+            <div class="token-info">
+              <div class="token-name">--bg-surface</div>
+              <div class="token-value">#0f1117</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="token-swatch" style="background: #161820"></div>
+            <div class="token-info">
+              <div class="token-name">--bg-raised</div>
+              <div class="token-value">#161820</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div
+              class="token-swatch"
+              style="background: rgba(255, 255, 255, 0.055)"
+            ></div>
+            <div class="token-info">
+              <div class="token-name">--bg-card</div>
+              <div class="token-value">rgba(255,255,255,0.055)</div>
+            </div>
           </div>
         </div>
-        <div class="nav-links">
-          <span class="nav-link-item">About</span>
-          <span class="nav-link-item">Skills</span>
-          <span class="nav-link-item active">Experience</span>
-          <span class="nav-link-item">Projects</span>
-          <span class="nav-link-item">Contact</span>
+
+        <div class="comp-label">Text</div>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="token-swatch" style="background: #ffffff"></div>
+            <div class="token-info">
+              <div class="token-name">--text-primary</div>
+              <div class="token-value">#ffffff</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div
+              class="token-swatch"
+              style="background: rgba(255, 255, 255, 0.6)"
+            ></div>
+            <div class="token-info">
+              <div class="token-name">--text-secondary</div>
+              <div class="token-value">rgba(255,255,255,0.60)</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div
+              class="token-swatch"
+              style="background: rgba(255, 255, 255, 0.32)"
+            ></div>
+            <div class="token-info">
+              <div class="token-name">--text-muted</div>
+              <div class="token-value">rgba(255,255,255,0.32)</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div
+              class="token-swatch"
+              style="background: rgba(255, 255, 255, 0.18)"
+            ></div>
+            <div class="token-info">
+              <div class="token-name">--text-hint</div>
+              <div class="token-value">rgba(255,255,255,0.18)</div>
+            </div>
+          </div>
         </div>
-        <button class="nav-cta">Available for Work</button>
-      </div>
-    </div>
-    <div class="spec-row">
-      <div class="spec-pill">height: 64px</div>
-      <div class="spec-pill">backdrop-filter: blur(12px)</div>
-      <div class="spec-pill">position: fixed</div>
-      <div class="spec-pill">Inter 500 · 12px</div>
-      <div class="spec-pill">Plus Jakarta Sans 700 · 13px</div>
-    </div>
-  </section>
 
-  <!-- ═══ 5. BUTTONS ═══ -->
-  <section class="ds-section" id="buttons">
-    <div class="section-header">
-      <div class="section-tag">Component · 02</div>
-      <h2 class="section-title">Buttons</h2>
-      <p class="section-desc">Five variants across three sizes. All use Inter 600, border-radius pill, and translateY(-2px) on hover.</p>
-    </div>
-
-    <div class="comp-label">Variants</div>
-    <div class="preview-strip dark-bg">
-      <button class="btn btn-primary">Primary</button>
-      <button class="btn btn-ghost">Ghost</button>
-      <button class="btn btn-accent">Accent</button>
-      <button class="btn btn-outline">Outline</button>
-      <button class="btn btn-danger">Danger</button>
-    </div>
-
-    <div class="comp-label">Sizes</div>
-    <div class="preview-strip dark-bg" style="align-items:center">
-      <button class="btn btn-primary btn-sm">Small</button>
-      <button class="btn btn-primary">Default</button>
-      <button class="btn btn-primary btn-lg">Large</button>
-    </div>
-
-    <div class="comp-label">With Icon</div>
-    <div class="preview-strip dark-bg">
-      <button class="btn btn-primary">
-        View My Work
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#0a0c10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="btn btn-ghost">
-        Download CV
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 11h10" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-
-    <div class="spec-row">
-      <div class="spec-pill">border-radius: var(--r-pill)</div>
-      <div class="spec-pill">font: Inter 600 13px</div>
-      <div class="spec-pill">hover: translateY(-2px)</div>
-      <div class="spec-pill">active: scale(0.97)</div>
-      <div class="spec-pill">transition: 150ms ease</div>
-    </div>
-  </section>
-
-  <!-- ═══ 6. GLASS CARDS ═══ -->
-  <section class="ds-section" id="cards">
-    <div class="section-header">
-      <div class="section-tag">Component · 03</div>
-      <h2 class="section-title">Glass Cards</h2>
-      <p class="section-desc">The core surface. Requires a non-solid background (image, gradient, or colored surface) to show the blur effect.</p>
-    </div>
-
-    <div class="comp-label">Variants</div>
-    <div class="preview-strip dark-bg" style="align-items:flex-start;flex-wrap:wrap">
-      <div class="g-card" style="flex:1;min-width:200px">
-        <div class="g-card-label">Default Card</div>
-        <div class="g-card-title">Cambio Software</div>
-        <div class="g-card-body">Senior Software Engineer working on Healthcare Management Systems.</div>
-      </div>
-      <div class="g-card g-card-accent" style="flex:1;min-width:200px">
-        <div class="g-card-label">Accent Card</div>
-        <div class="g-card-title">Spring Boot</div>
-        <div class="g-card-body">Featured technology with accent border highlight.</div>
-      </div>
-      <div class="g-card g-card-success" style="flex:1;min-width:200px">
-        <div class="g-card-label">Status Card</div>
-        <div class="g-card-title">Currently Active</div>
-        <div class="g-card-body">Success-tinted border indicates current role or open status.</div>
-      </div>
-    </div>
-
-    <div class="comp-label" style="margin-top:28px">Status Card (Hero variant)</div>
-    <div class="preview-strip dark-bg">
-      <div class="g-card" style="width:100%;display:flex;align-items:center;gap:14px">
-        <span class="status-dot online"></span>
-        <div>
-          <div style="font-size:13px;font-weight:500;color:var(--text-secondary)">Currently at Cambio Software Engineering</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Senior Software Engineer · Sep 2022 – Present</div>
+        <div class="comp-label">Accent</div>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="token-swatch" style="background: #1c3557"></div>
+            <div class="token-info">
+              <div class="token-name">--accent-primary</div>
+              <div class="token-value">#1C3557</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="token-swatch" style="background: #3b82c4"></div>
+            <div class="token-info">
+              <div class="token-name">--accent-secondary</div>
+              <div class="token-value">#3B82C4</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div
+              class="token-swatch"
+              style="background: rgba(59, 130, 196, 0.15)"
+            ></div>
+            <div class="token-info">
+              <div class="token-name">--accent-tint</div>
+              <div class="token-value">rgba(59,130,196,0.15)</div>
+            </div>
+          </div>
         </div>
-        <div style="margin-left:auto"><span class="badge badge-success">Active</span></div>
-      </div>
-    </div>
 
-    <div class="spec-row">
-      <div class="spec-pill">backdrop-filter: blur(20px) saturate(160%)</div>
-      <div class="spec-pill">background: rgba(255,255,255,0.055)</div>
-      <div class="spec-pill">border: 1px solid rgba(255,255,255,0.10)</div>
-      <div class="spec-pill">border-radius: var(--r-lg)</div>
-      <div class="spec-pill">hover: translateY(-4px)</div>
-    </div>
-  </section>
-
-  <!-- ═══ 7. BADGES & PILLS ═══ -->
-  <section class="ds-section" id="badges">
-    <div class="section-header">
-      <div class="section-tag">Component · 04</div>
-      <h2 class="section-title">Badges & Pills</h2>
-    </div>
-
-    <div class="comp-label">Status Badges</div>
-    <div class="preview-strip dark-bg">
-      <span class="badge badge-success">● Active</span>
-      <span class="badge badge-info">● Available</span>
-      <span class="badge badge-warning">● Busy</span>
-      <span class="badge badge-error">● Unavailable</span>
-      <span class="badge badge-neutral">Neutral</span>
-    </div>
-
-    <div class="comp-label">Status Dots</div>
-    <div class="preview-strip dark-bg" style="gap:24px">
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="status-dot online"></span>
-        <span style="font-size:12px;color:var(--text-secondary)">Online / Active</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="status-dot busy"></span>
-        <span style="font-size:12px;color:var(--text-secondary)">Busy</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="status-dot offline"></span>
-        <span style="font-size:12px;color:var(--text-secondary)">Offline</span>
-      </div>
-    </div>
-
-    <div class="comp-label">Skill / Technology Pills</div>
-    <div class="preview-strip dark-bg" style="flex-wrap:wrap;gap:8px">
-      <span class="skill-pill featured">Java 8</span>
-      <span class="skill-pill featured">Spring Boot</span>
-      <span class="skill-pill featured">Angular 2+</span>
-      <span class="skill-pill featured">REST / SOAP</span>
-      <span class="skill-pill">JPA / Hibernate</span>
-      <span class="skill-pill">MySQL</span>
-      <span class="skill-pill">Oracle</span>
-      <span class="skill-pill">Maven</span>
-      <span class="skill-pill">JUnit</span>
-      <span class="skill-pill">AWS</span>
-      <span class="skill-pill">Jenkins</span>
-      <span class="skill-pill">Git</span>
-    </div>
-
-    <div class="spec-row">
-      <div class="spec-pill">font: JetBrains Mono 11px</div>
-      <div class="spec-pill">padding: 4px 12px</div>
-      <div class="spec-pill">border-radius: var(--r-pill)</div>
-    </div>
-  </section>
-
-  <!-- ═══ 8. FORM INPUTS ═══ -->
-  <section class="ds-section" id="inputs">
-    <div class="section-header">
-      <div class="section-tag">Component · 05</div>
-      <h2 class="section-title">Form Inputs</h2>
-      <p class="section-desc">Used in the Contact section. Steel Blue focus ring with tinted background on focus.</p>
-    </div>
-
-    <div class="preview-strip column" style="gap:20px;max-width:520px">
-      <div class="field" style="width:100%">
-        <label class="field-label">Full Name</label>
-        <input class="input" type="text" placeholder="Kasun Thilina" />
-      </div>
-      <div class="field" style="width:100%">
-        <label class="field-label">Email Address</label>
-        <input class="input" type="email" placeholder="kgkasunthilina@gmail.com" />
-      </div>
-      <div class="field" style="width:100%">
-        <label class="field-label">Message</label>
-        <textarea class="input" placeholder="Write your message here..."></textarea>
-      </div>
-      <button class="btn btn-primary" style="align-self:flex-start">
-        Send Message
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#0a0c10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-
-    <div class="spec-row">
-      <div class="spec-pill">background: rgba(255,255,255,0.05)</div>
-      <div class="spec-pill">border: 1px solid rgba(255,255,255,0.10)</div>
-      <div class="spec-pill">focus: border #3B82C4 + glow</div>
-      <div class="spec-pill">border-radius: var(--r-sm)</div>
-      <div class="spec-pill">font: Inter 400 13px</div>
-    </div>
-  </section>
-
-  <!-- ═══ 9. STAT CARDS ═══ -->
-  <section class="ds-section" id="stats">
-    <div class="section-header">
-      <div class="section-tag">Component · 06</div>
-      <h2 class="section-title">Stat Cards</h2>
-      <p class="section-desc">Used in the Hero section. Plus Jakarta Sans 700 for the number, Inter uppercase for the label.</p>
-    </div>
-
-    <div class="preview-strip dark-bg" style="gap:14px">
-      <div class="stat-card" style="flex:1">
-        <div class="stat-num">7+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-card" style="flex:1">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Systems Built</div>
-      </div>
-      <div class="stat-card" style="flex:1">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Companies</div>
-      </div>
-    </div>
-
-    <div class="comp-label" style="margin-top:28px">Inline Stat Row (Hero variant)</div>
-    <div class="preview-strip dark-bg">
-      <div style="display:flex;gap:0;align-items:center">
-        <div style="padding-right:28px;margin-right:28px;border-right:1px solid var(--border-subtle)">
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px">7+</div>
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--text-muted)">Years Exp.</div>
+        <div class="comp-label">Semantic</div>
+        <div class="token-grid">
+          <div class="token-card">
+            <div class="token-swatch" style="background: #4ade80"></div>
+            <div class="token-info">
+              <div class="token-name">--success</div>
+              <div class="token-value">#4ade80</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="token-swatch" style="background: #f59e0b"></div>
+            <div class="token-info">
+              <div class="token-name">--warning</div>
+              <div class="token-value">#f59e0b</div>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="token-swatch" style="background: #f87171"></div>
+            <div class="token-info">
+              <div class="token-name">--error</div>
+              <div class="token-value">#f87171</div>
+            </div>
+          </div>
         </div>
-        <div style="padding-right:28px;margin-right:28px;border-right:1px solid var(--border-subtle)">
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px">10+</div>
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--text-muted)">Systems Built</div>
+      </section>
+
+      <!-- ═══ 2. TYPOGRAPHY ═══ -->
+      <section class="ds-section" id="typography">
+        <div class="section-header">
+          <div class="section-tag">Foundation · 02</div>
+          <h2 class="section-title">Typography</h2>
+          <p class="section-desc">
+            Three font families, each with a specific role. Never mix roles.
+          </p>
         </div>
-        <div>
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px">3</div>
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--text-muted)">Companies</div>
+
+        <div class="preview-strip column">
+          <div
+            style="
+              font-size: 11px;
+              color: var(--text-muted);
+              margin-bottom: 20px;
+              font-family: 'JetBrains Mono', monospace;
+            "
+          >
+            Plus Jakarta Sans — Display & Headings
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">
+              Display / Hero Name <span>800 · 60px · -0.02em</span>
+            </div>
+            <div
+              style="
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: clamp(36px, 5vw, 60px);
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                line-height: 1;
+                color: var(--text-primary);
+              "
+            >
+              Kasun Thilina
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">
+              Section Heading <span>700 · 32px · -0.01em</span>
+            </div>
+            <div
+              style="
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 32px;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                color: var(--text-primary);
+              "
+            >
+              Work Experience
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">Sub-heading <span>600 · 20px</span></div>
+            <div
+              style="
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+                color: var(--text-primary);
+              "
+            >
+              Cambio Software Engineering
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">Card Title <span>600 · 17px</span></div>
+            <div
+              style="
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                color: var(--text-primary);
+              "
+            >
+              Senior Software Engineer
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══ 10. TIMELINE ═══ -->
-  <section class="ds-section" id="timeline">
-    <div class="section-header">
-      <div class="section-tag">Component · 07</div>
-      <h2 class="section-title">Timeline</h2>
-      <p class="section-desc">Used in the Experience section. Active item has a Steel Blue filled dot.</p>
-    </div>
-
-    <div class="preview-strip dark-bg column" style="max-width:420px">
-      <div class="timeline">
-        <div class="tl-item active">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Sep 2022 – Present</div>
-          <div class="tl-company">Cambio Software Engineering</div>
-          <div class="tl-role">Senior Software Engineer</div>
+        <div class="preview-strip column" style="margin-top: 12px">
+          <div
+            style="
+              font-size: 11px;
+              color: var(--text-muted);
+              margin-bottom: 20px;
+              font-family: 'JetBrains Mono', monospace;
+            "
+          >
+            Inter — Body & UI
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">Body <span>400 · 15px · 1.7</span></div>
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 400;
+                color: var(--text-secondary);
+                line-height: 1.7;
+                max-width: 480px;
+              "
+            >
+              Senior Software Engineer crafting robust enterprise systems with
+              Java, Spring Boot &amp; Angular. 7+ years building things that
+              scale.
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">
+              UI Label <span>600 · 11px · 0.10em uppercase</span>
+            </div>
+            <div
+              style="
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+              "
+            >
+              Core Technologies
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta">
+              Caption / Eyebrow <span>500 · 10px · 0.22em uppercase</span>
+            </div>
+            <div
+              style="
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: var(--accent-secondary);
+              "
+            >
+              Available for work
+            </div>
+          </div>
         </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">May 2018 – Jul 2022</div>
-          <div class="tl-company">Mobitel (Pvt) Ltd</div>
-          <div class="tl-role">Senior Software Engineer</div>
+
+        <div class="preview-strip column" style="margin-top: 12px">
+          <div
+            style="
+              font-size: 11px;
+              color: var(--text-muted);
+              margin-bottom: 16px;
+              font-family: 'JetBrains Mono', monospace;
+            "
+          >
+            JetBrains Mono — Code & Data
+          </div>
+          <div
+            style="
+              font-family: 'JetBrains Mono', monospace;
+              font-size: 12px;
+              color: var(--text-secondary);
+              line-height: 2;
+            "
+          >
+            Java 8 &nbsp;·&nbsp; Spring Boot &nbsp;·&nbsp; Angular 2+
+            &nbsp;·&nbsp; REST / SOAP<br />
+            <span style="font-size: 10px; color: var(--text-muted)"
+              >2022–Present &nbsp;·&nbsp; kgkasunthilina@gmail.com</span
+            >
+          </div>
         </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Mar 2017 – Mar 2018</div>
-          <div class="tl-company">Virtusa (Pvt) Ltd</div>
-          <div class="tl-role">Associate Engineer – Technology</div>
+      </section>
+
+      <!-- ═══ 3. SPACING & RADIUS ═══ -->
+      <section class="ds-section" id="spacing">
+        <div class="section-header">
+          <div class="section-tag">Foundation · 03</div>
+          <h2 class="section-title">Spacing & Radius</h2>
         </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Aug 2016 – Mar 2017</div>
-          <div class="tl-company">Cosmoforge Technologies</div>
-          <div class="tl-role">Associate Software Engineer</div>
+
+        <div class="comp-label">Spacing Scale</div>
+        <div
+          class="preview-strip"
+          style="flex-direction: column; align-items: flex-start; gap: 10px"
+        >
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                width: 4px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-1: 4px</span
+            >
+            <div
+              style="
+                width: 8px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-2: 8px</span
+            >
+            <div
+              style="
+                width: 12px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-3: 12px</span
+            >
+            <div
+              style="
+                width: 16px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-4: 16px</span
+            >
+            <div
+              style="
+                width: 24px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-6: 24px</span
+            >
+            <div
+              style="
+                width: 32px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-8: 32px</span
+            >
+            <div
+              style="
+                width: 48px;
+                height: 20px;
+                background: var(--accent-secondary);
+                border-radius: 2px;
+                margin-left: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+              >--sp-12: 48px</span
+            >
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══ 11. SOCIAL BUTTONS ═══ -->
-  <section class="ds-section" id="social">
-    <div class="section-header">
-      <div class="section-tag">Component · 08</div>
-      <h2 class="section-title">Social Buttons</h2>
-    </div>
-    <div class="preview-strip dark-bg" style="gap:10px">
-      <a href="#" class="social-btn" title="LinkedIn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="Email">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="GitHub">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="WhatsApp">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.544 5.876L0 24l6.334-1.521A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.373l-.36-.214-3.735.897.94-3.617-.235-.372A9.818 9.818 0 0 1 2.182 12C2.182 6.578 6.578 2.182 12 2.182c5.423 0 9.818 4.396 9.818 9.818 0 5.423-4.395 9.818-9.818 9.818z"/></svg>
-      </a>
-    </div>
-    <div class="spec-row">
-      <div class="spec-pill">size: 36×36px</div>
-      <div class="spec-pill">border-radius: 50%</div>
-      <div class="spec-pill">background: rgba(255,255,255,0.07)</div>
-    </div>
-  </section>
+        <div class="comp-label" style="margin-top: 28px">Border Radius</div>
+        <div class="preview-strip" style="gap: 20px; flex-wrap: wrap">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 4px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-xs: 4px</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 8px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-sm: 8px</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 12px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-md: 12px</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 16px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-lg: 16px</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 20px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-xl: 20px</span
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: var(--bg-raised);
+                border: 1px solid var(--border-default);
+                border-radius: 999px;
+              "
+            ></div>
+            <span
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 10px;
+                color: var(--text-muted);
+              "
+              >--r-pill</span
+            >
+          </div>
+        </div>
+      </section>
 
-  <!-- ═══ 12. MISC ═══ -->
-  <section class="ds-section" id="misc">
-    <div class="section-header">
-      <div class="section-tag">Component · 09</div>
-      <h2 class="section-title">Misc Elements</h2>
-    </div>
+      <!-- ═══ 4. NAVBAR ═══ -->
+      <section class="ds-section" id="navbar">
+        <div class="section-header">
+          <div class="section-tag">Component · 01</div>
+          <h2 class="section-title">Navigation Bar</h2>
+          <p class="section-desc">
+            Fixed at top, full width, 64px height. Frosted surface on scroll.
+            Identity block left, links centered, CTA right.
+          </p>
+        </div>
+        <div class="preview-strip">
+          <div class="navbar-preview">
+            <div class="nav-logo">
+              <div class="nav-badge">KT</div>
+              <div class="nav-name-block">
+                <div class="n1">Kasun Thilina</div>
+                <div class="n2">Senior Software Engineer</div>
+              </div>
+            </div>
+            <div class="nav-links">
+              <span class="nav-link-item">About</span>
+              <span class="nav-link-item">Skills</span>
+              <span class="nav-link-item active">Experience</span>
+              <span class="nav-link-item">Projects</span>
+              <span class="nav-link-item">Contact</span>
+            </div>
+            <button class="nav-cta">Available for Work</button>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-pill">height: 64px</div>
+          <div class="spec-pill">backdrop-filter: blur(12px)</div>
+          <div class="spec-pill">position: fixed</div>
+          <div class="spec-pill">Inter 500 · 12px</div>
+          <div class="spec-pill">Plus Jakarta Sans 700 · 13px</div>
+        </div>
+      </section>
 
-    <div class="comp-label">Dividers</div>
-    <div class="preview-strip column" style="gap:16px">
-      <div class="divider"></div>
-      <div class="divider-label">or</div>
-    </div>
+      <!-- ═══ 5. BUTTONS ═══ -->
+      <section class="ds-section" id="buttons">
+        <div class="section-header">
+          <div class="section-tag">Component · 02</div>
+          <h2 class="section-title">Buttons</h2>
+          <p class="section-desc">
+            Five variants across three sizes. All use Inter 600, border-radius
+            pill, and translateY(-2px) on hover.
+          </p>
+        </div>
 
-    <div class="comp-label" style="margin-top:24px">Eyebrow with Rule</div>
-    <div class="preview-strip dark-bg column" style="gap:6px">
-      <div style="font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-secondary);display:flex;align-items:center;gap:10px">
-        <span style="width:24px;height:1px;background:var(--accent-secondary);display:block"></span>
-        Available for work
-      </div>
-      <div style="font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:10px">
-        <span style="width:24px;height:1px;background:var(--text-muted);display:block"></span>
-        Career Journey
-      </div>
-    </div>
+        <div class="comp-label">Variants</div>
+        <div class="preview-strip dark-bg">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-accent">Accent</button>
+          <button class="btn btn-outline">Outline</button>
+          <button class="btn btn-danger">Danger</button>
+        </div>
 
-    <div class="comp-label" style="margin-top:24px">Scroll Hint</div>
-    <div class="preview-strip dark-bg" style="justify-content:center">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.45">
-        <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#fff">Scroll</div>
-        <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff);animation:scrollDrop 1.8s ease-in-out infinite"></div>
-      </div>
-    </div>
-  </section>
+        <div class="comp-label">Sizes</div>
+        <div class="preview-strip dark-bg" style="align-items: center">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
 
-  <!-- ═══ 13. ANIMATIONS ═══ -->
-  <section class="ds-section" id="animations">
-    <div class="section-header">
-      <div class="section-tag">Reference · 01</div>
-      <h2 class="section-title">Animations</h2>
-      <p class="section-desc">All motion uses these three keyframes. Copy directly into your stylesheet.</p>
-    </div>
+        <div class="comp-label">With Icon</div>
+        <div class="preview-strip dark-bg">
+          <button class="btn btn-primary">
+            View My Work
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="#0a0c10"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button class="btn btn-ghost">
+            Download CV
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M7 2v7M4 6l3 3 3-3M2 11h10"
+                stroke="rgba(255,255,255,0.75)"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
 
-    <div class="code-block"><pre><span class="c-comment">/* Entry — used on all section reveals */</span>
+        <div class="spec-row">
+          <div class="spec-pill">border-radius: var(--r-pill)</div>
+          <div class="spec-pill">font: Inter 600 13px</div>
+          <div class="spec-pill">hover: translateY(-2px)</div>
+          <div class="spec-pill">active: scale(0.97)</div>
+          <div class="spec-pill">transition: 150ms ease</div>
+        </div>
+      </section>
+
+      <!-- ═══ 6. GLASS CARDS ═══ -->
+      <section class="ds-section" id="cards">
+        <div class="section-header">
+          <div class="section-tag">Component · 03</div>
+          <h2 class="section-title">Glass Cards</h2>
+          <p class="section-desc">
+            The core surface. Requires a non-solid background (image, gradient,
+            or colored surface) to show the blur effect.
+          </p>
+        </div>
+
+        <div class="comp-label">Variants</div>
+        <div
+          class="preview-strip dark-bg"
+          style="align-items: flex-start; flex-wrap: wrap"
+        >
+          <div class="g-card" style="flex: 1; min-width: 200px">
+            <div class="g-card-label">Default Card</div>
+            <div class="g-card-title">Cambio Software</div>
+            <div class="g-card-body">
+              Senior Software Engineer working on Healthcare Management Systems.
+            </div>
+          </div>
+          <div class="g-card g-card-accent" style="flex: 1; min-width: 200px">
+            <div class="g-card-label">Accent Card</div>
+            <div class="g-card-title">Spring Boot</div>
+            <div class="g-card-body">
+              Featured technology with accent border highlight.
+            </div>
+          </div>
+          <div class="g-card g-card-success" style="flex: 1; min-width: 200px">
+            <div class="g-card-label">Status Card</div>
+            <div class="g-card-title">Currently Active</div>
+            <div class="g-card-body">
+              Success-tinted border indicates current role or open status.
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-label" style="margin-top: 28px">
+          Status Card (Hero variant)
+        </div>
+        <div class="preview-strip dark-bg">
+          <div
+            class="g-card"
+            style="width: 100%; display: flex; align-items: center; gap: 14px"
+          >
+            <span class="status-dot online"></span>
+            <div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: var(--text-secondary);
+                "
+              >
+                Currently at Cambio Software Engineering
+              </div>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text-muted);
+                  margin-top: 2px;
+                "
+              >
+                Senior Software Engineer · Sep 2022 – Present
+              </div>
+            </div>
+            <div style="margin-left: auto">
+              <span class="badge badge-success">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-pill">
+            backdrop-filter: blur(20px) saturate(160%)
+          </div>
+          <div class="spec-pill">background: rgba(255,255,255,0.055)</div>
+          <div class="spec-pill">border: 1px solid rgba(255,255,255,0.10)</div>
+          <div class="spec-pill">border-radius: var(--r-lg)</div>
+          <div class="spec-pill">hover: translateY(-4px)</div>
+        </div>
+      </section>
+
+      <!-- ═══ 7. BADGES & PILLS ═══ -->
+      <section class="ds-section" id="badges">
+        <div class="section-header">
+          <div class="section-tag">Component · 04</div>
+          <h2 class="section-title">Badges & Pills</h2>
+        </div>
+
+        <div class="comp-label">Status Badges</div>
+        <div class="preview-strip dark-bg">
+          <span class="badge badge-success">● Active</span>
+          <span class="badge badge-info">● Available</span>
+          <span class="badge badge-warning">● Busy</span>
+          <span class="badge badge-error">● Unavailable</span>
+          <span class="badge badge-neutral">Neutral</span>
+        </div>
+
+        <div class="comp-label">Status Dots</div>
+        <div class="preview-strip dark-bg" style="gap: 24px">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span class="status-dot online"></span>
+            <span style="font-size: 12px; color: var(--text-secondary)"
+              >Online / Active</span
+            >
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span class="status-dot busy"></span>
+            <span style="font-size: 12px; color: var(--text-secondary)"
+              >Busy</span
+            >
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span class="status-dot offline"></span>
+            <span style="font-size: 12px; color: var(--text-secondary)"
+              >Offline</span
+            >
+          </div>
+        </div>
+
+        <div class="comp-label">Skill / Technology Pills</div>
+        <div class="preview-strip dark-bg" style="flex-wrap: wrap; gap: 8px">
+          <span class="skill-pill featured">Java 8</span>
+          <span class="skill-pill featured">Spring Boot</span>
+          <span class="skill-pill featured">Angular 2+</span>
+          <span class="skill-pill featured">REST / SOAP</span>
+          <span class="skill-pill">JPA / Hibernate</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">Oracle</span>
+          <span class="skill-pill">Maven</span>
+          <span class="skill-pill">JUnit</span>
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">Jenkins</span>
+          <span class="skill-pill">Git</span>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-pill">font: JetBrains Mono 11px</div>
+          <div class="spec-pill">padding: 4px 12px</div>
+          <div class="spec-pill">border-radius: var(--r-pill)</div>
+        </div>
+      </section>
+
+      <!-- ═══ 8. FORM INPUTS ═══ -->
+      <section class="ds-section" id="inputs">
+        <div class="section-header">
+          <div class="section-tag">Component · 05</div>
+          <h2 class="section-title">Form Inputs</h2>
+          <p class="section-desc">
+            Used in the Contact section. Steel Blue focus ring with tinted
+            background on focus.
+          </p>
+        </div>
+
+        <div class="preview-strip column" style="gap: 20px; max-width: 520px">
+          <div class="field" style="width: 100%">
+            <label class="field-label">Full Name</label>
+            <input class="input" type="text" placeholder="Kasun Thilina" />
+          </div>
+          <div class="field" style="width: 100%">
+            <label class="field-label">Email Address</label>
+            <input
+              class="input"
+              type="email"
+              placeholder="kgkasunthilina@gmail.com"
+            />
+          </div>
+          <div class="field" style="width: 100%">
+            <label class="field-label">Message</label>
+            <textarea
+              class="input"
+              placeholder="Write your message here..."
+            ></textarea>
+          </div>
+          <button class="btn btn-primary" style="align-self: flex-start">
+            Send Message
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="#0a0c10"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-pill">background: rgba(255,255,255,0.05)</div>
+          <div class="spec-pill">border: 1px solid rgba(255,255,255,0.10)</div>
+          <div class="spec-pill">focus: border #3B82C4 + glow</div>
+          <div class="spec-pill">border-radius: var(--r-sm)</div>
+          <div class="spec-pill">font: Inter 400 13px</div>
+        </div>
+      </section>
+
+      <!-- ═══ 9. STAT CARDS ═══ -->
+      <section class="ds-section" id="stats">
+        <div class="section-header">
+          <div class="section-tag">Component · 06</div>
+          <h2 class="section-title">Stat Cards</h2>
+          <p class="section-desc">
+            Used in the Hero section. Plus Jakarta Sans 700 for the number,
+            Inter uppercase for the label.
+          </p>
+        </div>
+
+        <div class="preview-strip dark-bg" style="gap: 14px">
+          <div class="stat-card" style="flex: 1">
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card" style="flex: 1">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Systems Built</div>
+          </div>
+          <div class="stat-card" style="flex: 1">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Companies</div>
+          </div>
+        </div>
+
+        <div class="comp-label" style="margin-top: 28px">
+          Inline Stat Row (Hero variant)
+        </div>
+        <div class="preview-strip dark-bg">
+          <div style="display: flex; gap: 0; align-items: center">
+            <div
+              style="
+                padding-right: 28px;
+                margin-right: 28px;
+                border-right: 1px solid var(--border-subtle);
+              "
+            >
+              <div
+                style="
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: 26px;
+                  font-weight: 700;
+                  color: #fff;
+                  line-height: 1;
+                  margin-bottom: 4px;
+                "
+              >
+                7+
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  font-weight: 500;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--text-muted);
+                "
+              >
+                Years Exp.
+              </div>
+            </div>
+            <div
+              style="
+                padding-right: 28px;
+                margin-right: 28px;
+                border-right: 1px solid var(--border-subtle);
+              "
+            >
+              <div
+                style="
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: 26px;
+                  font-weight: 700;
+                  color: #fff;
+                  line-height: 1;
+                  margin-bottom: 4px;
+                "
+              >
+                10+
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  font-weight: 500;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--text-muted);
+                "
+              >
+                Systems Built
+              </div>
+            </div>
+            <div>
+              <div
+                style="
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: 26px;
+                  font-weight: 700;
+                  color: #fff;
+                  line-height: 1;
+                  margin-bottom: 4px;
+                "
+              >
+                3
+              </div>
+              <div
+                style="
+                  font-size: 10px;
+                  font-weight: 500;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--text-muted);
+                "
+              >
+                Companies
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ 10. TIMELINE ═══ -->
+      <section class="ds-section" id="timeline">
+        <div class="section-header">
+          <div class="section-tag">Component · 07</div>
+          <h2 class="section-title">Timeline</h2>
+          <p class="section-desc">
+            Used in the Experience section. Active item has a Steel Blue filled
+            dot.
+          </p>
+        </div>
+
+        <div class="preview-strip dark-bg column" style="max-width: 420px">
+          <div class="timeline">
+            <div class="tl-item active">
+              <div class="tl-dot"></div>
+              <div class="tl-year">Sep 2022 – Present</div>
+              <div class="tl-company">Cambio Software Engineering</div>
+              <div class="tl-role">Senior Software Engineer</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">May 2018 – Jul 2022</div>
+              <div class="tl-company">Mobitel (Pvt) Ltd</div>
+              <div class="tl-role">Senior Software Engineer</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">Mar 2017 – Mar 2018</div>
+              <div class="tl-company">Virtusa (Pvt) Ltd</div>
+              <div class="tl-role">Associate Engineer – Technology</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">Aug 2016 – Mar 2017</div>
+              <div class="tl-company">Cosmoforge Technologies</div>
+              <div class="tl-role">Associate Software Engineer</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ 11. SOCIAL BUTTONS ═══ -->
+      <section class="ds-section" id="social">
+        <div class="section-header">
+          <div class="section-tag">Component · 08</div>
+          <h2 class="section-title">Social Buttons</h2>
+        </div>
+        <div class="preview-strip dark-bg" style="gap: 10px">
+          <a href="#" class="social-btn" title="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+              />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="Email">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="GitHub">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+              />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"
+              />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.544 5.876L0 24l6.334-1.521A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.373l-.36-.214-3.735.897.94-3.617-.235-.372A9.818 9.818 0 0 1 2.182 12C2.182 6.578 6.578 2.182 12 2.182c5.423 0 9.818 4.396 9.818 9.818 0 5.423-4.395 9.818-9.818 9.818z"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="spec-row">
+          <div class="spec-pill">size: 36×36px</div>
+          <div class="spec-pill">border-radius: 50%</div>
+          <div class="spec-pill">background: rgba(255,255,255,0.07)</div>
+        </div>
+      </section>
+
+      <!-- ═══ 12. MISC ═══ -->
+      <section class="ds-section" id="misc">
+        <div class="section-header">
+          <div class="section-tag">Component · 09</div>
+          <h2 class="section-title">Misc Elements</h2>
+        </div>
+
+        <div class="comp-label">Dividers</div>
+        <div class="preview-strip column" style="gap: 16px">
+          <div class="divider"></div>
+          <div class="divider-label">or</div>
+        </div>
+
+        <div class="comp-label" style="margin-top: 24px">Eyebrow with Rule</div>
+        <div class="preview-strip dark-bg column" style="gap: 6px">
+          <div
+            style="
+              font-size: 10px;
+              font-weight: 500;
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: var(--accent-secondary);
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <span
+              style="
+                width: 24px;
+                height: 1px;
+                background: var(--accent-secondary);
+                display: block;
+              "
+            ></span>
+            Available for work
+          </div>
+          <div
+            style="
+              font-size: 10px;
+              font-weight: 500;
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: var(--text-muted);
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <span
+              style="
+                width: 24px;
+                height: 1px;
+                background: var(--text-muted);
+                display: block;
+              "
+            ></span>
+            Career Journey
+          </div>
+        </div>
+
+        <div class="comp-label" style="margin-top: 24px">Scroll Hint</div>
+        <div class="preview-strip dark-bg" style="justify-content: center">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+              opacity: 0.45;
+            "
+          >
+            <div
+              style="
+                font-family: 'Inter', sans-serif;
+                font-size: 9px;
+                font-weight: 500;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #fff;
+              "
+            >
+              Scroll
+            </div>
+            <div
+              style="
+                width: 1px;
+                height: 40px;
+                background: linear-gradient(
+                  to bottom,
+                  rgba(255, 255, 255, 0),
+                  #fff
+                );
+                animation: scrollDrop 1.8s ease-in-out infinite;
+              "
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ 13. ANIMATIONS ═══ -->
+      <section class="ds-section" id="animations">
+        <div class="section-header">
+          <div class="section-tag">Reference · 01</div>
+          <h2 class="section-title">Animations</h2>
+          <p class="section-desc">
+            All motion uses these three keyframes. Copy directly into your
+            stylesheet.
+          </p>
+        </div>
+
+        <div class="code-block">
+          <pre><span class="c-comment">/* Entry — used on all section reveals */</span>
 <span class="c-key">@keyframes</span> fadeUp {
   from { <span class="c-val">opacity</span>: <span class="c-str">0</span>; <span class="c-val">transform</span>: <span class="c-str">translateY(20px)</span>; }
   to   { <span class="c-val">opacity</span>: <span class="c-str">1</span>; <span class="c-val">transform</span>: <span class="c-str">translateY(0)</span>; }
@@ -1227,18 +2304,31 @@
 <span class="c-comment">/* Respect reduced motion */</span>
 <span class="c-key">@media (prefers-reduced-motion: reduce)</span> {
   <span class="c-key">*, *::before, *::after</span> { <span class="c-val">animation-duration</span>: <span class="c-str">0.01ms !important</span>; <span class="c-val">transition-duration</span>: <span class="c-str">0.01ms !important</span>; }
-}</pre></div>
-  </section>
+}</pre>
+        </div>
+      </section>
 
-  <!-- ═══ 14. CSS VARIABLES ═══ -->
-  <section class="ds-section" id="cssref">
-    <div class="section-header">
-      <div class="section-tag">Reference · 02</div>
-      <h2 class="section-title">CSS Variables — Full Reference</h2>
-      <p class="section-desc">Copy this block into your <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-secondary)">globals.css</code> as the first thing after your font imports.</p>
-    </div>
+      <!-- ═══ 14. CSS VARIABLES ═══ -->
+      <section class="ds-section" id="cssref">
+        <div class="section-header">
+          <div class="section-tag">Reference · 02</div>
+          <h2 class="section-title">CSS Variables — Full Reference</h2>
+          <p class="section-desc">
+            Copy this block into your
+            <code
+              style="
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 12px;
+                color: var(--text-secondary);
+              "
+              >globals.css</code
+            >
+            as the first thing after your font imports.
+          </p>
+        </div>
 
-    <div class="code-block"><pre><span class="c-key">:root</span> {
+        <div class="code-block">
+          <pre><span class="c-key">:root</span> {
   <span class="c-comment">/* ── Backgrounds ── */</span>
   <span class="c-key">--bg-page</span>:      <span class="c-str">#0a0c10</span>;
   <span class="c-key">--bg-surface</span>:   <span class="c-str">#0f1117</span>;
@@ -1298,31 +2388,51 @@
   <span class="c-key">--font-display</span>: <span class="c-str">'Plus Jakarta Sans', sans-serif</span>;
   <span class="c-key">--font-body</span>:    <span class="c-str">'Inter', sans-serif</span>;
   <span class="c-key">--font-mono</span>:    <span class="c-str">'JetBrains Mono', monospace</span>;
-}</pre></div>
-  </section>
+}</pre>
+        </div>
+      </section>
+    </main>
 
-</main>
+    <style>
+      @keyframes scrollDrop {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+          opacity: 0;
+        }
+        50% {
+          transform: scaleY(1);
+          transform-origin: top;
+          opacity: 1;
+        }
+        100% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+          opacity: 0;
+        }
+      }
+    </style>
 
-<style>
-  @keyframes scrollDrop {
-    0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
-  }
-</style>
+    <script>
+      function scrollTo(id) {
+        document
+          .getElementById(id)
+          .scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document
+          .querySelectorAll('.nav-link')
+          .forEach(l => l.classList.remove('active'));
+        event.target.classList.add('active');
+      }
 
-<script>
-  function scrollTo(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    event.target.classList.add('active');
-  }
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.ds-section').forEach(s => io.observe(s));
-</script>
-
-</body>
+      const io = new IntersectionObserver(
+        entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.ds-section').forEach(s => io.observe(s));
+    </script>
+  </body>
 </html>

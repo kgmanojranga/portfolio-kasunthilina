@@ -24,7 +24,8 @@ export function SocialButton({ href, title, icon }: SocialButtonProps) {
         justifyContent: 'center',
         cursor: 'pointer',
         color: 'var(--text-secondary)',
-        transition: 'background var(--t-base), border-color var(--t-base), color var(--t-fast)',
+        transition:
+          'background var(--t-base), border-color var(--t-base), color var(--t-fast)',
         textDecoration: 'none',
       }}
       onMouseEnter={e => {

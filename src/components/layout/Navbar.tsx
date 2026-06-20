@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
 const NAV_LINKS = [
-  { label: 'About',      href: '#about' },
-  { label: 'Skills',     href: '#skills' },
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Projects',   href: '#projects' },
-  { label: 'Contact',    href: '#contact' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 const Navbar = () => {
@@ -20,7 +20,9 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sections = NAV_LINKS.map(l => document.querySelector(l.href) as HTMLElement | null).filter(Boolean);
+    const sections = NAV_LINKS.map(
+      l => document.querySelector(l.href) as HTMLElement | null
+    ).filter(Boolean);
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -195,7 +197,6 @@ const Navbar = () => {
 
       <header className={`site-nav${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-inner">
-
           <a href="#hero" className="nav-logo">
             <div className="nav-logo-badge">KT</div>
             <div>
@@ -216,7 +217,9 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <a href="#contact" className="nav-cta">Available for Work</a>
+          <a href="#contact" className="nav-cta">
+            Available for Work
+          </a>
 
           <button
             className="nav-hamburger"
@@ -224,16 +227,33 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {menuOpen ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 6 6 18M6 6l12 12"/>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
               </svg>
             ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 6h16M4 12h16M4 18h16"/>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
-
         </div>
       </header>
 
@@ -248,7 +268,11 @@ const Navbar = () => {
             {link.label}
           </a>
         ))}
-        <a href="#contact" className="nav-mobile-link" onClick={() => setMenuOpen(false)}>
+        <a
+          href="#contact"
+          className="nav-mobile-link"
+          onClick={() => setMenuOpen(false)}
+        >
           Available for Work
         </a>
       </nav>

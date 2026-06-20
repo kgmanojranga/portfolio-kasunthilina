@@ -5,7 +5,12 @@ interface TimelineItemProps {
   active?: boolean;
 }
 
-export function TimelineItem({ year, company, role, active = false }: TimelineItemProps) {
+export function TimelineItem({
+  year,
+  company,
+  role,
+  active = false,
+}: TimelineItemProps) {
   return (
     <div
       style={{

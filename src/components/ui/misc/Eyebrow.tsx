@@ -3,7 +3,10 @@ interface EyebrowProps {
   color?: string;
 }
 
-export function Eyebrow({ children, color = 'var(--accent-secondary)' }: EyebrowProps) {
+export function Eyebrow({
+  children,
+  color = 'var(--accent-secondary)',
+}: EyebrowProps) {
   return (
     <div
       style={{

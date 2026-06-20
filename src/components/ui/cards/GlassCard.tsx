@@ -15,7 +15,12 @@ const variantBorder: Record<GlassCardVariant, string> = {
   success: 'rgba(74,222,128,0.25)',
 };
 
-export function GlassCard({ variant = 'default', children, style, className }: GlassCardProps) {
+export function GlassCard({
+  variant = 'default',
+  children,
+  style,
+  className,
+}: GlassCardProps) {
   return (
     <div
       className={className}
@@ -26,7 +31,8 @@ export function GlassCard({ variant = 'default', children, style, className }: G
         backdropFilter: 'var(--glass-blur)',
         WebkitBackdropFilter: 'var(--glass-blur)',
         padding: '20px 24px',
-        transition: 'background var(--t-base), border-color var(--t-base), transform var(--t-base)',
+        transition:
+          'background var(--t-base), border-color var(--t-base), transform var(--t-base)',
         ...style,
       }}
       onMouseEnter={e => {

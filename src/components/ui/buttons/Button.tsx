@@ -1,9 +1,15 @@
-import { type ReactNode, type ButtonHTMLAttributes, type AnchorHTMLAttributes } from 'react';
+import {
+  type ReactNode,
+  type ButtonHTMLAttributes,
+  type AnchorHTMLAttributes,
+} from 'react';
 
 type ButtonVariant = 'primary' | 'ghost' | 'accent' | 'outline' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-type ButtonAsButton = { as?: 'button' } & ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonAsButton = {
+  as?: 'button';
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 type ButtonAsAnchor = { as: 'a' } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 type ButtonProps = (ButtonAsButton | ButtonAsAnchor) & {
@@ -59,24 +65,43 @@ const baseStyle: React.CSSProperties = {
   letterSpacing: '0.03em',
   borderRadius: 'var(--r-pill)',
   cursor: 'pointer',
-  transition: 'transform var(--t-fast), background var(--t-base), box-shadow var(--t-base)',
+  transition:
+    'transform var(--t-fast), background var(--t-base), box-shadow var(--t-base)',
   outline: 'none',
   textDecoration: 'none',
 };
 
-export function Button({ variant = 'primary', size = 'md', children, style, as, ...props }: ButtonProps) {
-  const composedStyle = { ...baseStyle, ...variantStyles[variant], ...sizeStyles[size], ...style };
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  children,
+  style,
+  as,
+  ...props
+}: ButtonProps) {
+  const composedStyle = {
+    ...baseStyle,
+    ...variantStyles[variant],
+    ...sizeStyles[size],
+    ...style,
+  };
 
   if (as === 'a') {
     return (
-      <a {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} style={composedStyle}>
+      <a
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        style={composedStyle}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button {...(props as ButtonHTMLAttributes<HTMLButtonElement>)} style={composedStyle}>
+    <button
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+      style={composedStyle}
+    >
       {children}
     </button>
   );

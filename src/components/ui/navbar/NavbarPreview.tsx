@@ -15,7 +15,14 @@ export function NavbarPreview() {
         width: '100%',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          flexShrink: 0,
+        }}
+      >
         <div
           style={{
             width: '32px',
@@ -73,9 +80,15 @@ export function NavbarPreview() {
             style={{
               fontSize: '12px',
               fontWeight: 500,
-              color: link === 'Experience' ? 'var(--text-primary)' : 'var(--text-muted)',
+              color:
+                link === 'Experience'
+                  ? 'var(--text-primary)'
+                  : 'var(--text-muted)',
               paddingBottom: '2px',
-              borderBottom: link === 'Experience' ? '2px solid rgba(255,255,255,0.55)' : 'none',
+              borderBottom:
+                link === 'Experience'
+                  ? '2px solid rgba(255,255,255,0.55)'
+                  : 'none',
               cursor: 'pointer',
             }}
           >

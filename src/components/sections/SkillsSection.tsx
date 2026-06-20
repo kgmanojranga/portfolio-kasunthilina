@@ -32,7 +32,7 @@ const SkillsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {technologies.map((cat) => (
+          {technologies.map(cat => (
             <div
               key={cat.category}
               className="bg-white rounded-2xl border border-neutral-200 p-6 hover:border-neutral-300 hover:shadow-sm transition-all"
@@ -47,7 +47,7 @@ const SkillsSection = () => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {cat.items.map((item) => (
+                {cat.items.map(item => (
                   <span
                     key={item}
                     className="px-2.5 py-1 rounded-md bg-neutral-100 text-neutral-700 text-xs font-medium"

@@ -8,7 +8,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout><HomePage /></Layout>} />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <HomePage />
+            </Layout>
+          }
+        />
         <Route path="/design-system" element={<DesignSystemPage />} />
         <Route path="/sandbox" element={<SandboxPage />} />
       </Routes>

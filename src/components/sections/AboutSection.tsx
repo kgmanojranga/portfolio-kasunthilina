@@ -1,7 +1,14 @@
 import profile from '../../data/profile';
 
 const AboutSection = () => {
-  const { name, title, summary, yearsOfExperience, contact, employmentHistory } = profile;
+  const {
+    name,
+    title,
+    summary,
+    yearsOfExperience,
+    contact,
+    employmentHistory,
+  } = profile;
   const currentRole = employmentHistory[0];
 
   const stats = [
@@ -20,23 +27,33 @@ const AboutSection = () => {
   return (
     <section id="about" className="section-padding border-t border-neutral-100">
       <div className="container-custom">
-
         {/* Section header */}
         <div className="mb-12">
-          <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-2">About</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">Who I am</h2>
+          <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-2">
+            About
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">
+            Who I am
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-
           {/* Left — bio + details */}
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <p className="text-neutral-600 text-base leading-relaxed">{summary}</p>
               <p className="text-neutral-600 text-base leading-relaxed">
-                Currently working as a <span className="font-medium text-neutral-900">{currentRole.role}</span> at{' '}
-                <span className="font-medium text-neutral-900">{currentRole.company}</span>, focused on building
-                reliable, well-tested backend systems.
+                {summary}
+              </p>
+              <p className="text-neutral-600 text-base leading-relaxed">
+                Currently working as a{' '}
+                <span className="font-medium text-neutral-900">
+                  {currentRole.role}
+                </span>{' '}
+                at{' '}
+                <span className="font-medium text-neutral-900">
+                  {currentRole.company}
+                </span>
+                , focused on building reliable, well-tested backend systems.
               </p>
             </div>
 
@@ -44,7 +61,9 @@ const AboutSection = () => {
             <div className="flex flex-col gap-3">
               {details.map(({ label, value }) => (
                 <div key={label} className="flex gap-4 text-sm">
-                  <span className="w-20 shrink-0 text-neutral-400">{label}</span>
+                  <span className="w-20 shrink-0 text-neutral-400">
+                    {label}
+                  </span>
                   <span className="text-neutral-700">{value}</span>
                 </div>
               ))}
@@ -62,24 +81,38 @@ const AboutSection = () => {
 
           {/* Right — stats */}
           <div className="flex flex-col gap-6">
-            <p className="text-sm font-medium text-neutral-500">By the numbers</p>
+            <p className="text-sm font-medium text-neutral-500">
+              By the numbers
+            </p>
             <div className="grid grid-cols-1 gap-4">
               {stats.map(({ value, label }) => (
-                <div key={label} className="flex items-center gap-6 p-5 border border-neutral-200 rounded-xl">
-                  <span className="text-4xl font-bold text-neutral-900 w-16 shrink-0">{value}</span>
+                <div
+                  key={label}
+                  className="flex items-center gap-6 p-5 border border-neutral-200 rounded-xl"
+                >
+                  <span className="text-4xl font-bold text-neutral-900 w-16 shrink-0">
+                    {value}
+                  </span>
                   <span className="text-sm text-neutral-500">{label}</span>
                 </div>
               ))}
             </div>
 
             <div className="p-5 border border-neutral-200 rounded-xl mt-2">
-              <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-3">Current role</p>
-              <p className="text-base font-semibold text-neutral-900">{title}</p>
-              <p className="text-sm text-neutral-500 mt-1">{currentRole.company}</p>
-              <p className="text-xs text-neutral-400 mt-1">{currentRole.period}</p>
+              <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-3">
+                Current role
+              </p>
+              <p className="text-base font-semibold text-neutral-900">
+                {title}
+              </p>
+              <p className="text-sm text-neutral-500 mt-1">
+                {currentRole.company}
+              </p>
+              <p className="text-xs text-neutral-400 mt-1">
+                {currentRole.period}
+              </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
