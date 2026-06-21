@@ -1,4 +1,5 @@
 import profile from '../../data/profile';
+import NetworkSphereBackground from '../ui/misc/NetworkSphereBackground';
 
 const AboutSection = () => {
   const { title, contact } = profile;
@@ -13,37 +14,7 @@ const AboutSection = () => {
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          background-image: url('/about-me-background-image.jpeg');
-          background-size: cover;
-          background-position: center center;
-          background-repeat: no-repeat;
-        }
-
-        .about-overlay {
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(to right,
-              rgba(10,12,16,0.65) 0%,
-              rgba(10,12,16,0.40) 40%,
-              rgba(10,12,16,0.15) 70%,
-              rgba(10,12,16,0.05) 100%
-            ),
-            linear-gradient(to bottom,
-              rgba(10,12,16,0.10) 0%,
-              rgba(10,12,16,0.25) 100%
-            );
-          pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-          .about-overlay {
-            background: linear-gradient(to bottom,
-              rgba(10,12,16,0.30) 0%,
-              rgba(10,12,16,0.60) 60%,
-              rgba(10,12,16,0.80) 100%
-            );
-          }
+          background: #f8f9fa;
         }
 
         .about-inner {
@@ -82,6 +53,34 @@ const AboutSection = () => {
           flex-shrink: 0;
         }
 
+        .about-overlay {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(to right,
+              rgba(10,12,16,0.78) 0%,
+              rgba(10,12,16,0.50) 40%,
+              rgba(10,12,16,0.18) 70%,
+              rgba(10,12,16,0.08) 100%
+            ),
+            linear-gradient(to bottom,
+              rgba(10,12,16,0.18) 0%,
+              rgba(10,12,16,0.38) 100%
+            );
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+          .about-overlay {
+            background: linear-gradient(to bottom,
+              rgba(10,12,16,0.40) 0%,
+              rgba(10,12,16,0.75) 60%,
+              rgba(10,12,16,0.92) 100%
+            );
+          }
+        }
+
         .about-name {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: clamp(38px, 5.5vw, 72px);
@@ -109,6 +108,7 @@ const AboutSection = () => {
         }
       `}</style>
 
+      <NetworkSphereBackground />
       <div className="about-overlay" />
 
       <div className="about-inner">
