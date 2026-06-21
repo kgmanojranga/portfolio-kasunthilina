@@ -48,10 +48,37 @@ const HeroSection = () => {
           background-repeat: no-repeat;
         }
 
+        @media (max-width: 768px) {
+          .hero-photo {
+            background-image: url('/hero-image-1.jpeg');
+            background-position: center top;
+          }
+        }
+
         .hero-photo-mask {
           position: absolute;
           inset: 0;
-          background: rgba(28, 53, 87, 0.30);
+          background:
+            linear-gradient(to right,
+              rgba(10,12,16,0.78) 0%,
+              rgba(10,12,16,0.50) 40%,
+              rgba(10,12,16,0.18) 70%,
+              rgba(10,12,16,0.08) 100%
+            ),
+            linear-gradient(to bottom,
+              rgba(10,12,16,0.18) 0%,
+              rgba(10,12,16,0.38) 100%
+            );
+        }
+
+        @media (max-width: 768px) {
+          .hero-photo-mask {
+            background: linear-gradient(to bottom,
+              rgba(10,12,16,0.40) 0%,
+              rgba(10,12,16,0.75) 60%,
+              rgba(10,12,16,0.92) 100%
+            );
+          }
         }
 
         .hero-radial {

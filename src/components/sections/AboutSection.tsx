@@ -1,113 +1,126 @@
 import profile from '../../data/profile';
 
 const AboutSection = () => {
-  const { title, summary, yearsOfExperience, contact, employmentHistory } =
-    profile;
-  const currentRole = employmentHistory[0];
-
-  const stats = [
-    { value: yearsOfExperience, label: 'Years of experience' },
-    { value: '9+', label: 'Projects delivered' },
-    { value: '7', label: 'Companies worked' },
-  ];
-
-  const details = [
-    { label: 'Location', value: 'Matara, Sri Lanka' },
-    { label: 'Email', value: contact.email },
-    { label: 'Phone', value: contact.mobile },
-    { label: 'Birthday', value: contact.birthday },
-  ];
+  const { title, contact } = profile;
 
   return (
-    <section id="about" className="section-padding border-t border-neutral-100">
-      <div className="container-custom">
-        {/* Section header */}
-        <div className="mb-12">
-          <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-2">
-            About
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">
-            Who I am
-          </h2>
-        </div>
+    <section id="about" className="about-section">
+      <style>{`
+        .about-section {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          background-image: url('/about-me-background-image.jpeg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-          {/* Left — bio + details */}
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-600 text-base leading-relaxed">
-                {summary}
-              </p>
-              <p className="text-neutral-600 text-base leading-relaxed">
-                Currently working as a{' '}
-                <span className="font-medium text-neutral-900">
-                  {currentRole.role}
-                </span>{' '}
-                at{' '}
-                <span className="font-medium text-neutral-900">
-                  {currentRole.company}
-                </span>
-                , focused on building reliable, well-tested backend systems.
-              </p>
-            </div>
+        .about-overlay {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(to right,
+              rgba(10,12,16,0.65) 0%,
+              rgba(10,12,16,0.40) 40%,
+              rgba(10,12,16,0.15) 70%,
+              rgba(10,12,16,0.05) 100%
+            ),
+            linear-gradient(to bottom,
+              rgba(10,12,16,0.10) 0%,
+              rgba(10,12,16,0.25) 100%
+            );
+          pointer-events: none;
+        }
 
-            {/* Personal details */}
-            <div className="flex flex-col gap-3">
-              {details.map(({ label, value }) => (
-                <div key={label} className="flex gap-4 text-sm">
-                  <span className="w-20 shrink-0 text-neutral-400">
-                    {label}
-                  </span>
-                  <span className="text-neutral-700">{value}</span>
-                </div>
-              ))}
-            </div>
+        @media (max-width: 768px) {
+          .about-overlay {
+            background: linear-gradient(to bottom,
+              rgba(10,12,16,0.30) 0%,
+              rgba(10,12,16,0.60) 60%,
+              rgba(10,12,16,0.80) 100%
+            );
+          }
+        }
 
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="self-start px-6 py-2.5 rounded-lg border border-neutral-200 text-neutral-700 text-sm font-medium hover:border-neutral-400 transition-colors"
-            >
-              View LinkedIn
-            </a>
-          </div>
+        .about-inner {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0 4rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
 
-          {/* Right — stats */}
-          <div className="flex flex-col gap-6">
-            <p className="text-sm font-medium text-neutral-500">
-              By the numbers
-            </p>
-            <div className="grid grid-cols-1 gap-4">
-              {stats.map(({ value, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-6 p-5 border border-neutral-200 rounded-xl"
-                >
-                  <span className="text-4xl font-bold text-neutral-900 w-16 shrink-0">
-                    {value}
-                  </span>
-                  <span className="text-sm text-neutral-500">{label}</span>
-                </div>
-              ))}
-            </div>
+        @media (max-width: 768px) {
+          .about-inner { padding: 0 1.75rem; }
+        }
 
-            <div className="p-5 border border-neutral-200 rounded-xl mt-2">
-              <p className="text-xs font-medium text-neutral-400 tracking-widest uppercase mb-3">
-                Current role
-              </p>
-              <p className="text-base font-semibold text-neutral-900">
-                {title}
-              </p>
-              <p className="text-sm text-neutral-500 mt-1">
-                {currentRole.company}
-              </p>
-              <p className="text-xs text-neutral-400 mt-1">
-                {currentRole.period}
-              </p>
-            </div>
-          </div>
-        </div>
+        .about-eyebrow {
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #3b82c4;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0;
+        }
+        .about-eyebrow::before {
+          content: '';
+          width: 24px;
+          height: 1px;
+          background: #3b82c4;
+          flex-shrink: 0;
+        }
+
+        .about-name {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: clamp(38px, 5.5vw, 72px);
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: -0.03em;
+          line-height: 1.0;
+          margin: 0;
+        }
+
+        .about-subtitle {
+          font-size: 15px;
+          font-weight: 400;
+          color: rgba(255,255,255,0.45);
+          margin: 0;
+        }
+
+        .about-quote {
+          font-size: clamp(15px, 2vw, 18px);
+          font-style: italic;
+          line-height: 1.8;
+          color: rgba(255,255,255,0.38);
+          max-width: 560px;
+          margin: 0.5rem 0 0;
+        }
+      `}</style>
+
+      <div className="about-overlay" />
+
+      <div className="about-inner">
+        <p className="about-eyebrow">About me</p>
+        <h2 className="about-name">Kasun Thilina</h2>
+        <p className="about-subtitle">{title} · {contact.address}</p>
+        <p className="about-quote">
+          "A passionate Senior Software Engineer with 7+ years of experience building
+          robust enterprise systems. I thrive on solving complex problems with clean
+          architecture, and I bring the same focus and dedication to every system I
+          design — from backend APIs to scalable cloud deployments."
+        </p>
       </div>
     </section>
   );
