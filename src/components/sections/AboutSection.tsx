@@ -114,12 +114,15 @@ const AboutSection = () => {
       <div className="about-inner">
         <p className="about-eyebrow">About me</p>
         <h2 className="about-name">Kasun Thilina</h2>
-        <p className="about-subtitle">{title} · {contact.address}</p>
+        <p className="about-subtitle">
+          {title} · {contact.address}
+        </p>
         <p className="about-quote">
-          "A passionate Senior Software Engineer with 7+ years of experience building
-          robust enterprise systems. I thrive on solving complex problems with clean
-          architecture, and I bring the same focus and dedication to every system I
-          design — from backend APIs to scalable cloud deployments."
+          "A passionate Senior Software Engineer with 7+ years of experience
+          building robust enterprise systems. I thrive on solving complex
+          problems with clean architecture, and I bring the same focus and
+          dedication to every system I design — from backend APIs to scalable
+          cloud deployments."
         </p>
       </div>
     </section>

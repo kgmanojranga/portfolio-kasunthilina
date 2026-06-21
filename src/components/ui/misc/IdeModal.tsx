@@ -21,14 +21,18 @@ const IdeModal = ({
   language = 'TypeScript — UTF-8',
 }: IdeModalProps) => {
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   return (
@@ -224,9 +228,21 @@ const IdeModal = ({
       <div className={`ide-modal-panel${open ? ' open' : ''}`}>
         <div className="ide-modal-titlebar">
           <div className="ide-modal-dots">
-            <div className="ide-modal-dot red"    onClick={onClose} title="Close" />
-            <div className="ide-modal-dot yellow" onClick={onClose} title="Minimize" />
-            <div className="ide-modal-dot green"  onClick={onClose} title="Expand" />
+            <div
+              className="ide-modal-dot red"
+              onClick={onClose}
+              title="Close"
+            />
+            <div
+              className="ide-modal-dot yellow"
+              onClick={onClose}
+              title="Minimize"
+            />
+            <div
+              className="ide-modal-dot green"
+              onClick={onClose}
+              title="Expand"
+            />
           </div>
           <div className="ide-modal-tab">
             <span className="ide-modal-tab-dot" />
@@ -238,16 +254,24 @@ const IdeModal = ({
         <div className="ide-modal-body">
           <div className="ide-modal-gutter">
             {codeLines.map((_, i) => (
-              <div key={i} className="ide-modal-ln">{i + 1}</div>
+              <div key={i} className="ide-modal-ln">
+                {i + 1}
+              </div>
             ))}
           </div>
           <div className="ide-modal-code">
             {codeLines.map((line, i) => (
               <div key={i} className="ide-modal-code-line">
-                {line.tokens.length === 0 ? ' ' : line.tokens.map((tok, j) => (
-                  <span key={j} style={{ color: tokenColor(tok.t) }}>{tok.v}</span>
-                ))}
-                {i === codeLines.length - 1 && <span className="ide-modal-cursor" />}
+                {line.tokens.length === 0
+                  ? ' '
+                  : line.tokens.map((tok, j) => (
+                      <span key={j} style={{ color: tokenColor(tok.t) }}>
+                        {tok.v}
+                      </span>
+                    ))}
+                {i === codeLines.length - 1 && (
+                  <span className="ide-modal-cursor" />
+                )}
               </div>
             ))}
           </div>
@@ -256,7 +280,9 @@ const IdeModal = ({
         <div className="ide-modal-statusbar">
           <span className="ide-modal-status-item">⎇ main</span>
           <span className="ide-modal-status-item">✓ TypeScript</span>
-          <span className="ide-modal-status-item">Ln {codeLines.length}, Col 1</span>
+          <span className="ide-modal-status-item">
+            Ln {codeLines.length}, Col 1
+          </span>
           <span className="ide-modal-status-item right">kasun-portfolio</span>
         </div>
       </div>
