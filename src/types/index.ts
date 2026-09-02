@@ -1,11 +1,13 @@
 export interface ContactInfo {
-  fullName: string;
+  fullName?: string;
   email: string;
   mobile: string;
-  whatsapp: string;
-  address: string;
-  birthday: string;
+  whatsapp?: string;
+  address?: string;
+  birthday?: string;
   linkedin: string;
+  location?: string;
+  openToRelocate?: string;
 }
 
 export interface WorkExperience {
@@ -72,6 +74,7 @@ export interface ProfileData {
   name: string;
   title: string;
   summary: string;
+  summaryPoints?: string[];
   yearsOfExperience: string;
   contact: ContactInfo;
   workExperiences: WorkExperience[];

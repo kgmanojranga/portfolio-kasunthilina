@@ -76,7 +76,7 @@ const Footer = () => {
               {contact.mobile}
             </a>
             <p className="text-sm text-neutral-400 leading-relaxed">
-              {contact.address}
+              {contact.location}
             </p>
           </div>
         </div>

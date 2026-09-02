@@ -17,12 +17,6 @@ const ContactSection = () => {
       action: 'Call',
     },
     {
-      label: 'WhatsApp',
-      value: contact.whatsapp,
-      href: `https://wa.me/${contact.whatsapp.replace(/[^0-9]/g, '')}`,
-      action: 'Message on WhatsApp',
-    },
-    {
       label: 'LinkedIn',
       value: 'linkedin.com/in/kasunth',
       href: contact.linkedin,
@@ -52,7 +46,7 @@ const ContactSection = () => {
                 Location
               </p>
               <p className="text-sm font-medium text-neutral-900 mt-1">
-                {contact.address}
+                {contact.location}
               </p>
             </div>
           </div>

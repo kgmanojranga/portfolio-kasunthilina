@@ -115,7 +115,7 @@ const AboutSection = () => {
         <p className="about-eyebrow">About me</p>
         <h2 className="about-name">Kasun Thilina</h2>
         <p className="about-subtitle">
-          {title} · {contact.address}
+          {title} · {contact.location}
         </p>
         <p className="about-quote">
           "A passionate Senior Software Engineer with 7+ years of experience
